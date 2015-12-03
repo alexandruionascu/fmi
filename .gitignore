@@ -1,5 +1,6 @@
 # Use wildcards as well
 *~
+*
 *.in
 *.out
 *.o
