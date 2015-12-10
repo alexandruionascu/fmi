@@ -10,12 +10,15 @@ ifstream f(FIN);
 ofstream g(FOUT);
 
 int n, k, v[MAXN];
-bool s[MAXN];
 
-
-int quick(int left, int right)
+int solve(int left, int right, int k)
 {
-    int pivot = v[rand() % (right - left) + left + 1];
+    if(left == right)
+        return v[left];
+
+    int random = rand() % (right - left) + left + 1;
+    int pivot = v[random];
+
     int i = left;
     int j = right;
 
@@ -33,38 +36,25 @@ int quick(int left, int right)
 
         if(i <= j)
         {
-            swap(v[left], v[right]);
+            swap(v[i], v[j]);
             i++;
             j--;
         }
     }
 
-    return left - i + 1;
-}
+    int pos = j - left + 1;
 
-int solve(int left, int right)
-{
-    int pivot = (rand() % right - left) + left + 1;
-
-    if(left <= right)
+    if(pos >= k)
     {
-        cout << pivot <<endl;
-        int r = quick(left, right);
-
-        if(r == k)
-        {
-            cout << v[k] << endl;
-            return 0;
-        }
-        else if(r < k)
-        {
-            solve(left, k - 1);
-        }
-        else
-        {
-            solve(k+1, right);
-        }
+        return solve(left, j, k);
     }
+    else
+    {
+        return solve(j + 1, right, k - pos);
+    }
+
+    return 0;
+
 }
 
 int main()
@@ -72,14 +62,10 @@ int main()
     f >> n;
     f >> k;
 
-
-    for(int i=1; i<=n; i++)
+    for(int i = 1; i <= n; i++)
         f >> v[i];
 
-    solve(1, n);
-
-    for(int i=1; i<=n;i++)
-  //      cout << v[i] << " ";
+    g << solve(1, n, k);
 
     return 0;
 }
