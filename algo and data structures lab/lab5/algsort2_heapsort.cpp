@@ -1,104 +1,60 @@
 #include<iostream>
 #include<fstream>
-#include<vector>
+#define MAXN 500001
 #define FIN "algsort.in"
 #define FOUT "algsort.out"
-#define MAXN 500001
-using namespace std;
+#define in f
+#define out cout
 
-int heap[MAXN];
-int n;
-int solution[MAXN];
-int node;
+using namespace std;
 
 ifstream f(FIN);
 ofstream g(FOUT);
 
-int leftSon(int i)
+int h[MAXN];
+int n;
+int length;
+
+int swap(int firstPos, int secondPos)
 {
-    return heap[2 * i];
+
+    int aux = h[firstPos];
+    h[firstPos] = h[secondPos];
+    h[secondPos] = aux;
+
+    return 0;
 }
 
-int rightSon(int i)
+int insert(int value)
 {
-    return heap[2 * i + 1];
-}
-
-int heapify()
-{
-    if(!(rightSon(node) || leftSon(node)))
+    length++;
+    h[length] = value;
+    int position = length;
+    while(h[position] <  h[position / 2] && position > 1)
     {
-        return 0;
-    }
-    else
-    {
-        if(rightSon(node) > heap[node])
-        {
-            swap(heap[node], heap[2 * node + 1]);
-            node = node * 2 + 1;
-            heapify();
-        }
-
-        if(leftSon(node) > heap[node])
-        {
-            swap(heap[node], heap[2 * node]);
-            node *= 2;
-            heapify();
-        }
+        swap(position, position / 2);
+        position /= 2;
     }
 
     return 0;
 }
 
-int makeHeap()
-{
-    for(int i = n / 2; i > 0; i--)
-    {
-        node = i;
-        heapify();
-    }
-
-    return 0;
-}
-
-int remove(int k)
-{
-    heap[k] = 0;
-    if(k == 1)
-    {
-        node = 1;
-        heapify();
-    }
-    else
-    {
-        node = k / 2;
-        heapify();
-    }
-
-    return 0;
-}
 
 int main()
 {
-    f >> n;
-    int index = n;
+    in >> n;
+
+    int x;
+
     for(int i = 1; i <= n; i++)
     {
-        f >> heap[i];
+        in >> x;
+        insert(x);
     }
 
-    makeHeap();
+    for(int i = 1; i <= n; i++)
+        out << h[i] << " ";
 
-    for(int i=1; i<=n; i++)
-    {
-        solution[index] = heap[1];
-        index--;
-        remove(1);
-    }
-
-    for(int i=1; i<=n; i++)
-        cout << solution[i] << " ";
 
     return 0;
-
 }
