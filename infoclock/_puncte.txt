@@ -1,0 +1,45 @@
+Puncte infoclock:
+
+Tema 1:
+	egipt -> 1p
+	585A -> Gennady and the Dentist -> 1p
+	Less Money, More problems -> 3p
+
+Total: 5p
+
+
+Tema 2:
+	nrtri -> 1p
+	transport -> 1p
+	344E -> TODO
+
+Total 2p
+
+Tema 3:
+	editor -> 2p
+	trompeta -> 2p
+	secv6 -> 2p
+
+Total 6p
+
+Tema 4:
+	593A -> 2char -> 1p
+	593B -> Anton and Lines -> WA pe 60
+	595A -> Vitaly and the Night -> 1p
+	595B -> Pasha and the Phone -> 2p
+
+Total 4p
+
+Tema 5 - FMI No Stress:
+	buget -> 1p
+	por costel si trenul -> 1p
+	por costel si zeul -> 1p
+	random -> 1p
+	licenta -> 1p
+
+Total 5p
+
+Codeforces:
+	392-> 32 % -> 6p
+	331-> 46% -> 5p
+	334 -> 50% -> 5p
