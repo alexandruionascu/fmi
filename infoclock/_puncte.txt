@@ -24,13 +24,13 @@ Total 6p
 
 Tema 4:
 	593A -> 2char -> 1p
-	593B -> Anton and Lines -> WA pe 60
+	593B -> Anton and Lines -> 2p
 	595A -> Vitaly and the Night -> 1p
 	595B -> Pasha and the Phone -> 2p
 
-Total 4p
+Total 6p
 
-Tema 5 - FMI No Stress:
+Tema 5 + 6 - FMI No Stress:
 	buget -> 1p
 	por costel si trenul -> 1p
 	por costel si zeul -> 1p
@@ -39,7 +39,12 @@ Tema 5 - FMI No Stress:
 
 Total 5p
 
-Total: 22p
+Tema 7:
+	3sum-closest -> 2p
+
+Total 2p
+
+Total: 26p
 
 Codeforces:
 	

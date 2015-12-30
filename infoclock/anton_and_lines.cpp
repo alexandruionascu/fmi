@@ -1,8 +1,7 @@
-#include<iostream>
-#include<fstream>
-#include<algorithm>
-#include<vector>
+#include<bits/stdc++.h>
 #define FIN "lines.in"
+#define in cin
+#define out cout
 using namespace std;
 
 ifstream f(FIN);
@@ -14,45 +13,45 @@ int n;
 
 bool comparator(pair<long long, long long> p1, pair<long long, long long> p2)
 {
-    if(p1.first <= p2.first)
+    if(p1.first < p2.first)
         return true;
+    else if(p1. first == p2.first)
+        return p1.second < p2.second;
     else return false;
 }
 
-int read()
-{
-    f >> n;
-    f >> x1;
-    f >> x2;
+void read() {
+    in >> n;
+    in >> x1;
+    in >> x2;
 
     long long p1, p2;
     for(int i = 0; i < n; i++)
     {
-        f >> p1; f >> p2;
+        in >> p1; in >> p2;
         points.push_back(make_pair(p1, p2));
         lines.push_back(make_pair(x1 * p1 + p2, x2 * p1 + p2));
     }
-
-    return 0;
 }
 
-int solve()
-{
+void solve() {
 
     sort(lines.begin(), lines.end(), comparator);
+
+    long long lowerBound = lines[0].second;
+
     for(int i = 0; i < lines.size(); i++)
-        cout << lines[i].first << " "<<lines[i].second << endl;
-    for(int i = 1; i < lines.size(); i++)
     {
-        if(lines[i].second < lines[i-1].second && lines[i].first != lines[i-1].first)
+        if(lines[i].second < lowerBound)
         {
-            cout << "YES";
-            return 0;
+            out << "YES";
+            return;
         }
+
+        lowerBound = lines[i].second;
     }
 
-    cout << "NO";
-    return 0;
+    out << "NO";
 }
 
 int main()
