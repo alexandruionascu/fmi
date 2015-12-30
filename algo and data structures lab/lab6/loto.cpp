@@ -1,101 +1,91 @@
-#include<iostream>
-#include<fstream>
-#include<vector>
-#include<algorithm>
+#include<bits/stdc++.h>
 #define FIN "loto.in"
 #define FOUT "loto.out"
 #define in f
-#define out cout
+#define out g
 #define MAXN 101
 using namespace std;
+
+typedef struct Sum {
+    int a;
+    int b;
+    int c;
+    int value;
+};
 
 ifstream f(FIN);
 ofstream g(FOUT);
 
-int v[MAXN];
 int n, s;
+Sum sums[MAXN * MAXN * MAXN];
+int v[MAXN];
+int length;
 
-typedef struct
-{
-    int x;
-    int y;
-    int z;
-} Sum;
 
-vector< pair <int, Sum*> > sums;
-
-int read()
-{
+void read() {
     in >> n;
     in >> s;
-    out << s;
+
     for(int i = 1; i <= n; i++)
         in >> v[i];
-    return 0;
 }
 
-int write(int i, int j)
-{
-    out << sums[i].second->x << " " << sums[i].second->y << " " << sums[i].second->z << " ";
-    out << sums[j].second->x << " " << sums[j].second->y << " " << sums[j].second->z;
-
-    return 0;
+void write(Sum x, Sum y) {
+    out << x.a << " " << x.b << " " << x.c << " ";
+    out << y.a << " " << y.b << " " << y.c << " ";
 }
 
-int solve()
-{
-    for(int i = 1; i <= n; i++)
-    {
-        for(int j = 1; j <= n; j++)
-        {
-            for(int k = 1; k <= n; k++)
-            {
-                int value = v[i] + v[j] + v[k];
-                Sum* sum = new Sum();
-                sum->x = i;
-                sum->y = j;
-                sum->z = k;
-                sums.push_back(make_pair(value,sum));
+void solve() {
+    for(int i = 1; i <= n; i++) {
+        for(int j = i; j <= n; j++) {
+            for(int k = j; k <= n; k++) {
+                Sum aux;
+                aux.value = v[i] + v[j] + v[k];
+                aux.a = v[i];
+                aux.b = v[j];
+                aux.c = v[k];
+
+                length++;
+                sums[length] = aux;
             }
         }
     }
 
-    sort(sums.begin(), sums.end());
+    sort(sums + 1, sums + length, [](Sum a, Sum b) {
+        return a.value < b.value;
+    });
 
-    for(int i = 0; i < sums.size(); i++)
-        cout << sums[i].first << " ";
-    cout << "\n";
-    int left = 0;
-    int right = sums.size() - 1;
+    int left = 1;
+    int right = length;
 
-    while(left <= right)
-    {
-        if(sums[left].first + sums[right].first < s)
-        {
-            left++;
-        }
-        else if(sums[left].first + sums[right].first > s)
-        {
+    while(left < right) {
+        int target = s - sums[left].value;
+
+        while(sums[right].value > target)
             right--;
+
+        if(left > right) {
+            out << -1;
+            return;
         }
-        else
-        {
-            write(left, right);
-            return 0;
+
+        if(sums[right].value == target) {
+            write(sums[left], sums[right]);
+            return;
         }
+
+        left++;
     }
 
     out << -1;
-    return 0;
 }
 
-
-
-int main()
-{
+int main() {
     read();
     solve();
-
-
     return 0;
 }
+
+
+
+
