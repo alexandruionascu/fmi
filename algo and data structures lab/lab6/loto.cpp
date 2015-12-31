@@ -51,14 +51,14 @@ void solve() {
         }
     }
 
-    sort(sums + 1, sums + length, [](Sum a, Sum b) {
+    sort(sums + 1, sums + length + 1, [](Sum a, Sum b) {
         return a.value < b.value;
     });
 
     int left = 1;
     int right = length;
 
-    while(left < right) {
+    while(left <= right) {
         int target = s - sums[left].value;
 
         while(sums[right].value > target)
