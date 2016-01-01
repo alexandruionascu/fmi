@@ -1,42 +1,44 @@
-#include<iostream>
-#include<fstream>
-#include<string.h>
+#include<bits/stdc++.h>
 #define FIN "per.in"
 #define FOUT "per.out"
-#define base 127
-#define MOD 100007
+#define in f
+#define out cout
+#define BASE 127
+#define MAXN 6001
 using namespace std;
 
 ifstream f(FIN);
 ofstream g(FOUT);
 
 int n, k;
-string s;
+string text;
+int counter;
+int h[MAXN];
 
-int rollingHash(string str)
-{
-    int h = 0;
-    for(int i = 0; i < s.size(); i++)
-    {
-        h = (h * base) % MOD;
-        h = (h + str[i]) % MOD;
-    }
-
-    return h;
+void read() {
+    in >> n;
+    in >> k;
+    in >> text;
 }
 
-int main()
-{
-    f >> n;
-    f >> k;
-    f >> s;
+void solve() {
 
-    for(int i = 1; i <= k; i++)
-    {
-        for(int j = 0; j < n - k; j++)
-        {
-            string sub = s.substr(j, k);
-            int hash = rollingHash(sub);
+    int currentHash = 0;
+
+    for(int i = 1; i <= n / k; i++) {
+        currentHash = h[i - 1] * BASE + text[i - 1];
+        h[i] = currentHash;
+
+        for(int j = i; j <= n; j++) {
+
+
+
         }
     }
+}
+
+int main() {
+    read();
+    solve();
+    return 0;
 }
