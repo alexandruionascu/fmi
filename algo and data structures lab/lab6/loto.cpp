@@ -58,7 +58,7 @@ void solve() {
     int left = 1;
     int right = length;
 
-    while(left < right) {
+    while(left <= right) {
         int target = s - sums[left].value;
 
         while(sums[right].value > target)
