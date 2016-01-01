@@ -1,42 +1,60 @@
-#include<iostream>
-#include<fstream>
-#include<string.h>
-#define FIN "per.in"
-#define FOUT "per.out"
-#define base 127
-#define MOD 100007
+#include<bits/stdc++.h>
+#define BASE 127
+#define in f
+#define out g
+#define int64 unsigned long long
+#define MAXN 6001
 using namespace std;
 
-ifstream f(FIN);
-ofstream g(FOUT);
+ifstream f("per.in");
+ofstream g("per.out");
 
 int n, k;
 string s;
+int64 h[MAXN];
+int l[MAXN];
+int counter;
 
-int rollingHash(string str)
-{
-    int h = 0;
-    for(int i = 0; i < s.size(); i++)
-    {
-        h = (h * base) % MOD;
-        h = (h + str[i]) % MOD;
+void read() {
+    in >> n;
+    in >> k;
+    in >> s;
+}
+
+void solve() {
+
+    int64 baseNumber = 1;
+    int64 currentHash = 0;
+    for(int length = 1; length <= n / k; length++) {
+        currentHash = currentHash * BASE + s[length - 1];
+
+        l[length - 1] = 1;
+        h[length - 1] = currentHash;
+        int64 auxHash = currentHash;
+
+        for(int i = length; i < n; i++) {
+            auxHash = (auxHash - s[i - length] * baseNumber) * BASE + s[i];
+            h[i] = auxHash;
+            l[i] = 1;
+
+            if(h[i] == h[i - length]) {
+                l[i] += l[i - length];
+            }
+
+            if(l[i] >= k)
+                counter++;
+        }
+
+        baseNumber *= BASE;
+
     }
 
-    return h;
+    out << counter;
 }
 
 int main()
 {
-    f >> n;
-    f >> k;
-    f >> s;
-
-    for(int i = 1; i <= k; i++)
-    {
-        for(int j = 0; j < n - k; j++)
-        {
-            string sub = s.substr(j, k);
-            int hash = rollingHash(sub);
-        }
-    }
+    read();
+    solve();
+    return 0;
 }

@@ -5,7 +5,7 @@
 #define FIN "loto.in"
 #define FOUT "loto.out"
 #define in f
-#define out g
+#define out cout
 #define MAXN 101
 using namespace std;
 
@@ -77,16 +77,26 @@ int solve()
         while(left <= right && sums[right].first > target)
             right--;
 
-        if(sums[right].first == target)
+        if(left > right)
+        {
+            out << -1;
+            return 0;
+        }
+
+        if(sums[right].first < target)
+        {
+            left++;
+        }
+        else
         {
             write(left, right);
             return 0;
         }
-
-        left++;
     }
 
-    out << -1;
+    if(left > right)
+        out << -1;
+
     return 0;
 }
 

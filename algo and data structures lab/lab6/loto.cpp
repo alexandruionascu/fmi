@@ -51,7 +51,7 @@ void solve() {
         }
     }
 
-    sort(sums + 1, sums + length, [](Sum a, Sum b) {
+    sort(sums + 1, sums + length + 1, [](Sum a, Sum b) {
         return a.value < b.value;
     });
 
