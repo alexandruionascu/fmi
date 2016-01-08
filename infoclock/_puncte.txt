@@ -42,9 +42,13 @@ Total 5p
 Tema 7:
 	3sum-closest -> 2p
 
+Total: 2p
+
+Tema 8:
+	hashuri -> 2p
 Total 2p
 
-Total: 26p
+Total: 28p
 
 Codeforces:
 	
