@@ -1,49 +1,52 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
+#include<bits/stdc++.h>
+#define in f
+#define out cout
 using namespace std;
 
-vector< vector<int> > fourSum(vector<int>& nums, int target)
-    {
+ifstream f("date.in");
+int n;
+vector<int> v;
 
-        vector< vector<int> > solution;
-        vector< pair <int, pair <int, int> > > sums;
-
-        for(int i = 0; i < nums.size(); i++)
-        {
-            for(int j = i + 1; j < nums.size(); j++)
-            {
-                int sum = nums[i] + nums[j];
-                sums.push_back(make_pair(sum, make_pair(i, j)));
-            }
-        }
-
-        sort(sums.begin(), sums.end());
-
-        int left = 0;
-        int right = sums.size() - 1;
-
-        while(left < right)
-        {
-            if(sums[left].first + sums[right].first == target)
-            {
-                vector<int> sol;
-                sol.push_back(sums[left].second.first);
-                sol.push_back(sums[left].second.second);
-                sol.push_back(sums[right].second.first);
-                sol.push_back(sums[right].second.second);
-
-                solution.push_back(sol);
-            }
-            else if(sums[left].first + sums[right].first < target)
-            {
-                left++;
-            }
-            else right--;
-        }
-
-        return solution;
+void read() {
+    in >> n;
+    int x;
+    for(int i = 1; i <=n ;  i++) {
+        in >> x;
+        v.push_back(x);
     }
+}
+
+vector<vector<int>> fourSum(vector<int>& nums, int target) {
+    vector<int> sums;
+    unordered_map<int, int> h;
+    vector<vector<int>> result;
+    for(int i = 0; i < nums.size(); i++) {
+        for(int j = i + 1; j < nums.size(); j++) {
+            sums.push_back(v[i] + v[j]);
+            h[v[i] + v[j]] = sums.size();
+        }
+    }
+
+    for(int i = 0; i < sums.size(); i++) {
+        if(h.find(target - sums[i]) != h.end()) {
+            int j = h.find(target - sum[i]);
+            vector<int> aux;
+            aux.push_back();
+
+        }
+    }
+}
+
+void printArray(vector<vector<int>>& v) {
+    for(int i = 0; i < v.size(); i++) {
+        for(int j = 0; j < v[i].size(); j++) {
+            out << v[i][j] << " ";
+        }
+
+        out << "\n";
+    }
+}
+
 
 
 int main()
