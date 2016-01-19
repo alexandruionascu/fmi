@@ -1,0 +1,412 @@
+HTTP/1.1 200 OK
+Server: nginx/1.9.3 (Ubuntu)
+Date: Wed, 13 Jan 2016 18:49:25 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+Vary: Cookie
+Set-Cookie: csrftoken=3xzlcBwG6mraoVUTeaRHsLVFuZK2gUeH; expires=Wed, 11-Jan-2017 18:49:25 GMT; Max-Age=31449600; Path=/
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contests</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+
+
+
+    <link rel="icon" type="image/ico" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/css/ext/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/ext/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/static/css/csacademy.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round|Roboto|Lato' rel='stylesheet' type='text/css'>
+
+    <script src="/static/js/ext/require.js"></script>
+
+    <script>
+        var CSRF_TOKEN = "3xzlcBwG6mraoVUTeaRHsLVFuZK2gUeH";
+        var SERVER_TIME_OFFSET = Date.now() / 1000.0 - 1452710965.0018795;
+
+        var USER = {
+            ID: parseInt( 0 ) || 0,
+            USERNAME:  null ,
+            IS_SUPERUSER:  false ,
+            IS_AUTHENTICATED:  false ,
+        };
+        var WEBSOCKET_URL = "wss://csacademy.com/ws/";
+
+        function initCSA(start) {
+            require(["/static/require_config.js"], function () {
+                //TODO @vlad: remove snap from global require
+                require(["jquery", "jquery.bootstrap", "snap"], function ($) {
+                    require(["global"], function () {
+                        $(function () {
+                            start();
+                        });
+                    })
+                });
+            });
+        }
+        initCSA(function(){});
+    </script>
+
+
+    
+    
+
+    
+    
+
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#csa-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Home</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="csa-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/lessons/">Lessons</a></li>
+        <li><a href="/tasks/">Tasks</a></li>
+          <li><a href="/contests/">Contests</a></li>
+
+
+
+
+
+
+
+
+
+
+
+          <li><a href="/workspace/">Workspace</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/about/">About</a></li>
+        
+        <li class="dropdown">
+          
+            <li><a  data-toggle="modal" data-target="#loginModal">Login</a></li>
+          
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div id="loginModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+          
+
+
+
+
+
+
+<div class="login-form row">
+    <div class="normal-login col-xs-12 col-sm-6">
+        <h3>Login into your account</h3>
+        <form class="login" method="POST" action="/accounts/login/?next=/contests/">
+            <input type='hidden' name='csrfmiddlewaretoken' value='3xzlcBwG6mraoVUTeaRHsLVFuZK2gUeH' />
+            <div class="input-group form-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input autofocus="autofocus" class="form-control" id="id_login" name="login" placeholder="Email address" required="required" title="" type="email">
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                <input class="form-control" id="id_password" name="password" placeholder="Password" required="required" title="" type="password">
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label for="id_remember">
+                        <input class="" id="id_remember" name="remember" type="checkbox" checked="true"> Remember Me
+                    </label>
+                </div>
+            </div>
+
+            
+            <div class="form-actions">
+                <button class="btn btn-default" class="primaryAction" type="submit">Sign In</button>
+                <a class="btn btn-link" href="/accounts/password/reset/">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="social-login col-xs-12 col-sm-6">
+        <div class="socialaccount_ballot ">
+            <div class="social-button google-button">
+                <a title="Google" class="socialaccount_provider google"
+                   href="/accounts/google/login/?process=login">
+                    <i class="fa fa-google fa-2x"></i>
+                    <span class="google-login-text"> Sign in with Google </span>
+                </a>
+            </div>
+            <div class="social-button fb-button">
+                <a title="Facebook" class="socialaccount_provider facebook"
+                   href="/accounts/facebook/login/?process=login">
+                    <i class="fa fa-facebook fa-2x"></i>
+                    <span class="fb-login-text"> Sign in with Facebook </span>
+                </a>
+            </div>
+        </div>
+        <h2><a href="/accounts/signup?next=/contests/">Don't have an account? Sign Up!</a></h2>
+    </div>
+</div>
+
+<style>
+    .social-login a {
+        text-decoration: none;
+    }
+
+    .social-login h2 a {
+        color: #71B8E4;
+        display: block;
+        font-size: 17px;
+        font-weight: 400;
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    .google-button {
+        margin-top: 60px;
+        background: #DE4C34;
+        display: block;
+                padding: 3px;
+
+    }
+
+    .fa-google {
+        background: #DE4C34;
+        color: white;
+
+    }
+
+    .google-login-text {
+        color: white;
+        font-size: 1.2em;
+	    font-weight: 400;
+        padding: 9px 14px;
+    }
+
+    .google-button:hover {
+	    background: #CE3E26;
+    }
+
+    .fb-button {
+        margin-top: 10px;
+        display: block;
+        background: #3B5998;
+        padding: 3px;
+
+    }
+
+    .fa-facebook {
+        background:#354F88;
+        color: white;
+    }
+
+    .fb-login-text {
+        color: white;
+        font-size: 1.2em;
+	    font-weight: 400;
+        padding: 9px 14px;
+    }
+
+    .fb-button:hover {
+        background: #354F88;
+    }
+
+
+
+</style>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!-- Modal for new contest -->
+    <div class="modal fade" id="contestModal" tabindex="0" role="dialog" aria-labelledby="newContestLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="newContestLabel">New contest</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group">
+                        <label for="contestNameInput">Contest name</label>
+                        <input type="text" class="form-control" placeholder="Contest name" id="contestNameInput">
+                    </div>
+                    <br \>
+                    <div class="input-group">
+                        <label for="contestLongNameInput">Contest long name</label>
+                        <input type="text" class="form-control" placeholder="Contest long name" id="contestLongNameInput">
+                    </div>
+                    <br \>
+
+                    <div class="input-group">
+                        <label>Start/end date (<span class="contest-time"></span>)</label>
+                        <div class="form-group">
+                            <div class="input-group date" id="startDatePicker">
+                                <input type="text" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Duration:</label>
+                        <div class="form-inline">
+                            <div class="input-group col-sm-3">
+                                <input type="number" class="form-control" id="daysInput" value="0" min="0">
+                                <div class="input-group-addon">days</div>
+                            </div>
+                            <div class="input-group col-sm-3">
+                                <input type="number" class="form-control" id="hoursInput" value="0" min="0">
+                                <div class="input-group-addon">hours</div>
+                            </div>
+                            <div class="input-group col-sm-3">
+                                <input type="number" class="form-control" id="minutesInput" value="0" min="0">
+                                <div class="input-group-addon">minutes</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br \>
+
+                    <div class="input-group">
+                        <label for="scoreDropdown">Scoring type</label>
+                        <select class="form-control" id="scoreDropdown">
+                            
+                                <option value="0">ACM-style</option>
+                            
+                                <option value="1">Partial scoring</option>
+                            
+                                <option value="2">Optimization task</option>
+                            
+                                <option value="3">Special judge</option>
+                            
+                        </select>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input id="visibleCheckbox" type="checkbox"> Visible?
+                        </label>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addContestButton">Add contest</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container">
+        <h1>Available contests for you:</h1>
+
+        <h3> Active contests </h3>
+        
+            <table class="table table-striped">
+                <tr>
+                    <td>Contest</td>
+                    <td>Start time</td>
+                    <td>End time</td>
+                </tr>
+                
+                    <tr>
+                        <td><a href = "/contests/arhiva/"> Arhiva </a> </td>
+                        <td>None</td>
+                        <td>None</td>
+
+                        
+                    </tr>
+                
+                    <tr>
+                        <td><a href = "/contests/beta-round-1/"> Beta Round #1 </a> </td>
+                        <td>Jan. 16, 2016, 10 a.m.</td>
+                        <td>Jan. 16, 2016, 3 p.m.</td>
+
+                        
+                    </tr>
+                
+            </table>
+        
+
+        <h3> Past Contests </h3>
+        
+            <table class="table table-striped">
+                <tr>
+                    <td>Contest</td>
+                    <td>Start time</td>
+                    <td>End time</td>
+                </tr>
+                
+                    <tr>
+                        <td><a href = "/contests/alpha-test-8-dec/"> Alpha Test 8Dec </a> </td>
+                        <td>Dec. 8, 2015, 6 p.m.</td>
+                        <td>Dec. 8, 2015, 7 p.m.</td>
+                    </tr>
+                
+            </table>
+        
+
+        <!-- Button trigger modal -->
+        
+    </div>
+
+    <script type="text/javascript">
+        initCSA(function () {
+            require(["contest_list"], function (contest_list) {
+                contest_list.main();
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
