@@ -50,6 +50,9 @@ checkCharacter:
   #store the length
   lw $t4, n
 
+  incrementCounter:
+    addu $t3, $t3, 1
+    
   check:
     lb $t5, ($a0)
     beq $t5, $a1, incrementCounter
@@ -62,14 +65,12 @@ checkCharacter:
   sw $t3, matches
   li $v0, 1
   lw $a0, matches
+  syscall
   #return the number of matches
   move $v0, $t3
-  syscall
-
   jr $ra
 
-incrementCounter:
-  addu $t3, $t3, 1
+
 
 
 printYes:
