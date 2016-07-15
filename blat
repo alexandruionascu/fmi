@@ -1,0 +1,237 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/**
+ * Send your busters out into the fog to trap ghosts and bring them home!
+ **/
+ 
+int HOME_X = 0;
+int HOME_Y = 0;
+int BUSTER_MAX_RADIUS = 1760;
+int BUSTER_MIN_RADIUS = 900;
+int STATE_IDLE = 0;
+int STATE_CARRYING_GHOST = 1;
+int STATE_STUNNED = 2;
+int STATE_TRAPPING = 3;
+int CORNER = 1600;
+//forward declaration
+struct Entity;
+
+vector<Entity*> myTeam;
+vector<Entity*> enemyTeam;
+vector<Entity*> ghosts;
+
+//pair of busteId and ghostId
+vector<pair<int, int>> chases;
+
+//function prototypes
+bool hasBusterAssigned(int);
+double getDistance(Entity*, Entity*);
+double getDistance(Entity*, pair<int, int>);
+void removeInvalidChases();
+
+
+
+
+ struct Entity {
+     int id;
+     int x;
+     int y;
+     int type;
+     int state;
+     int value;
+     int chasedId = 0;
+     
+     Entity(int id, int x, int y, int type, int state, int value) {
+         this->id = id;
+         this->x = x;
+         this->y = y;
+         this->type = type;
+         this->state = state;
+         this->value = value;
+     }
+     
+     static void moveTo(int x, int y) {
+         cout << "MOVE " << x << " " << y << endl;
+     }
+     
+     
+     void assignGhost() {
+        sort(ghosts.begin(), ghosts.end(), [&](Entity* a, Entity* b) {
+            double distA = sqrt((x - a->x) * (x - a->x) + (y - a->y) * (y - a->y));
+            double distB = sqrt((x - b->x) * (x - b->x) + (y - b->y) * (y - b->y));
+            return (distA * a->value) < (distB * a->value);
+         });
+         
+        int index = 0;
+        while(index < ghosts.size() && hasBusterAssigned(ghosts[index]->id) == true) {
+            index++;   
+        }
+        
+        chasedId = ghosts[index]->id;
+        chases.push_back({id, chasedId});
+        cerr << "assigned buster id " << id << " to ghost id " << chasedId << endl;
+        
+     }
+     
+     void chaseGhost() {
+         if(state == STATE_CARRYING_GHOST) {
+             cerr << "buster " << id << " is carrying the ghost " << chasedId << endl;
+             if(getDistance(this, {HOME_X, HOME_Y}) < CORNER) {
+                     cout << "RELEASE" << endl;
+                     removeInvalidChases();
+             } else {
+                 cerr << "buster " << id << " is going home "; 
+                 cout << "MOVE " << HOME_X << " " << HOME_Y << endl;   
+             }
+        
+         } else {
+             
+             if(getDistance(this, ghosts[chasedId]) < BUSTER_MAX_RADIUS && getDistance(this, ghosts[chasedId]) > BUSTER_MIN_RADIUS) {
+                 cout << "BUST " << chasedId << endl;
+             } else {
+         
+                 cerr << "buster " << id << " is chasing ghost " << chasedId << endl;
+                  for(auto ghost : ghosts) {
+                    if(ghost->id == chasedId) {
+                      cout << "MOVE " << ghost->x << " " << ghost->y << endl;
+                      return;
+                    }
+                  }
+             }
+         }
+     }
+     
+};
+
+
+
+double getDistance(Entity* a, Entity* b) {
+    return sqrt((a->x - b->x) * (a->x - b->x) + (a->y - b->y) * (a->y - b->y));
+}
+
+double getDistance(Entity* e, pair<int, int> p) {
+    return sqrt((e->x - p.first) * (e->x - p.first) + (e->y - p.second) * (e->y - p.second));
+}
+
+
+bool hasGhostAssigned(int busterId) {
+    
+    for(auto chase : chases) 
+        if(chase.first == busterId)
+            return true;
+    
+    return false;
+}
+
+bool hasBusterAssigned(int ghostId) {
+     for(auto chase : chases) 
+        if(chase.second == ghostId)
+            return true;
+            
+    return false;
+}
+
+int getAssignedGhost(int busterId) {
+    for(auto chase : chases) 
+        if(chase.first == busterId)
+            return chase.second;
+    
+    return 0;
+}
+
+bool ghostIdExists(int ghostId) {
+    for(auto ghost : ghosts) 
+        if(ghost->id == ghostId)
+            return true;
+    return false;
+}
+
+void removeInvalidChases() {
+    for(int i = 0; i < chases.size(); i++) {
+        if(ghostIdExists(chases[i].second) == false) {
+            chases.erase(chases.begin() + i);
+            i--;
+        }
+    }
+}
+
+void loadAssignments() {
+    for(int i = 0; i < myTeam.size(); i++) {
+        if(hasGhostAssigned(myTeam[i]->id) == true) {
+            myTeam[i]->chasedId = getAssignedGhost(myTeam[i]->id);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+int main()
+{
+    int bustersPerPlayer; // the amount of busters you control
+    cin >> bustersPerPlayer; cin.ignore();
+    int ghostCount; // the amount of ghosts on the map
+    cin >> ghostCount; cin.ignore();
+    int myTeamId; // if this is 0, your base is on the top left of the map, if it is one, on the bottom right
+    
+    
+    cin >> myTeamId; cin.ignore();
+    
+    if(myTeamId == 1)
+        HOME_X = 16001, HOME_Y = 9001;
+
+    // game loop
+    while (1) {
+        int entities; // the number of busters and ghosts visible to you
+        
+        
+        cin >> entities; cin.ignore();
+        
+        myTeam.clear();
+        enemyTeam.clear();
+        ghosts.clear();
+        
+        for (int i = 0; i < entities; i++) {
+            int entityId; // buster id or ghost id
+            int x;
+            int y; // position of this buster / ghost
+            int entityType; // the team id if it is a buster, -1 if it is a ghost.
+            int state; // For busters: 0=idle, 1=carrying a ghost. For ghosts: remaining stamina points.
+            int value; // For busters: Ghost id being carried/busted or number of turns left when stunned. For ghosts: number of busters attempting to trap this ghost.
+            cin >> entityId >> x >> y >> entityType >> state >> value; cin.ignore();
+            
+            if(entityType == -1) {
+                ghosts.push_back(new Entity(entityId, x, y, entityType, state, value)); 
+            } else if(entityType == myTeamId) {
+               myTeam.push_back(new Entity(entityId, x, y, entityType, state, value));
+            } else enemyTeam.push_back(new Entity(entityId, x, y, entityType, state, value));
+        }
+        
+        removeInvalidChases();
+        loadAssignments();
+
+        for (int i = 0; i < bustersPerPlayer; i++) {   
+            
+            if(hasGhostAssigned(myTeam[i]->id) == false) {
+                myTeam[i]->assignGhost();
+            } 
+        
+            myTeam[i]->chaseGhost();
+            // Write an action using cout. DON'T FORGET THE "<< endl"
+            // To debug: cerr << "Debug messages..." << endl;
+
+           // cout << "MOVE 8000 4500" << endl; // MOVE x y | BUST id | RELEASE | STUN id
+        }
+    }
+}
