@@ -1,0 +1,159 @@
+body {
+  background-image: url("../img/lotr_background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+}
+
+.person-header {
+  margin: 0 auto;
+  width: 850px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.name-container {
+  display: inline-block;
+  margin: 15px;
+}
+
+.title-header {
+  position: relative;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: rgb(4, 99, 128);
+  z-index: 1;
+  margin: 0 auto;
+}
+
+.resume-content {
+  display: flex;
+  margin-top: 7%;
+}
+
+.hexagon-content {
+  z-index: 2;
+  margin: 10px;
+  position: relative;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 23px;
+}
+
+.first-name, .second-name {
+  margin: 0;
+  padding: 0;
+}
+
+#education {
+  float: left;
+  width: 33%;
+}
+
+#experience {
+  width: 33%;
+  display: inline-block;
+}
+
+#skills {
+  float: right;
+  width: 33%;
+}
+
+.hexagon {
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  height: 173.21px;
+  margin: 86.60px 0;
+  background-image: url("http://67.media.tumblr.com/243dde293048b4aaa4ffa1e3ff602038/tumblr_n803bce9Hq1srhjf5o1_500.gif");
+  background-size: auto 346.4102px;
+  background-position: center;
+}
+
+
+.hexTop,
+.hexBottom {
+  position: absolute;
+  z-index: 1;
+  width: 212.13px;
+  height: 212.13px;
+  overflow: hidden;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background: inherit;
+  left: 43.93px;
+}
+.hexTop:after,
+.hexBottom:after {
+  content: "";
+  position: absolute;
+  width: 300.0000px;
+  height: 173.20508075688775px;
+  -webkit-transform: rotate(45deg) scaleY(1.7321) translateY(-86.6025px);
+  -ms-transform: rotate(45deg) scaleY(1.7321) translateY(-86.6025px);
+  transform: rotate(45deg) scaleY(1.7321) translateY(-86.6025px);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background: inherit;
+}
+
+.hexTop {
+  top: -106.0660px;
+}
+
+.hexTop:after {
+  background-position: center top;
+}
+
+.hexBottom {
+  bottom: -106.0660px;
+}
+
+.hexBottom:after {
+  background-position: center bottom;
+}
+
+.hexagon:after {
+  content: "";
+  position: absolute;
+  top: 0.0000px;
+  left: 0;
+  width: 300.0000px;
+  height: 173.2051px;
+  z-index: 2;
+  background: inherit;
+}
+
+.hexagon-text {
+  position: relative;
+  width: 300px;
+  height: 173.21px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.hexagon-text:before,
+.hexagon-text:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+}
+
+.hexagon-text:before {
+  bottom: 100%;
+  border-bottom: 86.60px solid #ffffff;
+}
+
+.hexagon-text:after {
+  top: 100%;
+  width: 0;
+  border-top: 86.60px solid #ffffff;
+}
