@@ -1,0 +1,37 @@
+body {
+  background-color: #EEEEEE;
+  background-image: url('http://www.intrawallpaper.com/static/images/wpspyqaxufjlbiuawdun.png');
+  background-position: center;
+  background-size: cover;
+}
+
+
+
+h1 {
+  color: red;
+  text-decoration: underline;
+}
+
+.bordered {
+  border: 1px solid blue;
+  color: green;
+}
+
+.c1 {
+  background-color: purple;
+}
+
+p.c3 {
+  color: magenta;
+  font-weight: bold;
+}
+
+.c2 {
+  font-style: italic;
+}
+
+#pgf {
+  color: orange;
+  text-decoration: underline;
+  text-decoration: overline;
+}
