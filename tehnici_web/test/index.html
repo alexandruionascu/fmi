@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      * {
+          box-sizing: border-box;
+      }
+      .row::after {
+          content: "";
+          clear: both;
+          display: block;
+      }
+      [class*="col-"] {
+          float: left;
+          padding: 15px;
+      }
+      .col-1 {width: 8.33%;}
+      .col-2 {width: 16.66%;}
+      .col-3 {width: 25%;}
+      .col-4 {width: 33.33%;}
+      .col-5 {width: 41.66%;}
+      .col-6 {width: 50%;}
+      .col-7 {width: 58.33%;}
+      .col-8 {width: 66.66%;}
+      .col-9 {width: 75%;}
+      .col-10 {width: 83.33%;}
+      .col-11 {width: 91.66%;}
+      .col-12 {width: 100%;}
+      html {
+          font-family: "Lucida Sans", sans-serif;
+      }
+      .header {
+          background-color: #428a96;
+          color: #ffffff;
+          padding: 15px;
+          text-align: center;
+          height: 10%;
+      }
+      .menu ul, ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+      }
+      .menu li, li {
+          padding: 8px;
+          margin-bottom: 7px;
+          background-color :#33b5e5;
+          color: #ffffff;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      }
+      .menu li:hover, li:hover {
+          background-color: #0099cc;
+      }
+
+      footer {
+        position: sticky;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        background-color: #428a96;
+        color: #ffffff;
+        padding: 15px;
+        text-align: center;
+        height: 10%;
+      }
+
+      .description {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+      .iframe {
+        padding: 20px;
+      }
+
+      td {
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      body {
+        background: url('http://cdn.wallpapersafari.com/38/73/p5M9Kl.jpg');
+        background-size: cover;
+        font-family: Raleway, sans-serif;
+      }
+
+      img:hover {
+        transform: scale(1.2);
+      }
+
+      [class*="col-"] {
+          width: 100%;
+      }
+      @media only screen and (min-width: 600px) {
+          /* For tablets: */
+          .col-m-1 {width: 8.33%;}
+          .col-m-2 {width: 16.66%;}
+          .col-m-3 {width: 25%;}
+          .col-m-4 {width: 33.33%;}
+          .col-m-5 {width: 41.66%;}
+          .col-m-6 {width: 50%;}
+          .col-m-7 {width: 58.33%;}
+          .col-m-8 {width: 66.66%;}
+          .col-m-9 {width: 75%;}
+          .col-m-10 {width: 83.33%;}
+          .col-m-11 {width: 91.66%;}
+          .col-m-12 {width: 100%;}
+      }
+      @media only screen and (min-width: 768px) {
+          /* For desktop: */
+          .col-1 {width: 8.33%;}
+          .col-2 {width: 16.66%;}
+          .col-3 {width: 25%;}
+          .col-4 {width: 33.33%;}
+          .col-5 {width: 41.66%;}
+          .col-6 {width: 50%;}
+          .col-7 {width: 58.33%;}
+          .col-8 {width: 66.66%;}
+          .col-9 {width: 75%;}
+          .col-10 {width: 83.33%;}
+          .col-11 {width: 91.66%;}
+          .col-12 {width: 100%;}
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="header">
+      <h1>Softmagic</h1>
+    </div>
+
+    <div class="row">
+
+      <div class="col-3 menu">
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Projects</li>
+        <li>Contact</li>
+        </ul>
+      </div>
+
+      <div class="col-9 description row">
+
+        <div class="col-6 row description">
+          <h1>SoftMagic</h1>
+          <p>Soft Magic is an outsource brand for doing all king of software without any purpuse besides of collecting customer's money.</p>
+          <p>We only work with the latetest tehnologies beause why not lol.</p>
+        </div>
+
+        <div class="col-6 description">
+            <img src="work.jpg" width="400" height="300" />
+        </div>
+
+        <div class="col-9 description row">
+          <div class="row col-12">
+            <img src="design.png" class="col-6" width="200" height="300" />
+            <img src="tech.jpg" width="200" class="col-6" height="300" />
+          </div>
+          <div class="row col-12">
+              <ul class="col-6">
+                <li>Websites</li>
+                <li>Mobile Apps</li>
+                <li>Desktop Apps</li>
+              </ul>
+
+              <p class="col-6">
+                Our brand is very popular among software companies for our wow amaing software we deliver for our customers.How much do we charge? Contact us to find out more!
+              </p>
+          </div>
+        </div>
+
+        <div class="col-9 descripton row">
+          <iframe src="http://player.vimeo.com/video/142920794"  class="col-6" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+        <table class="col-6">
+            <thead>
+              <th>No</th>
+              <th>Duration</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>A month</td>
+                <td>Responsive Website</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Two Months</td>
+                <td>Mobile App</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Three weeks</td>
+                <td>Desktop App</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <footer>Copyright SoftMagic 2016</footer>
+  </body>
+</html>
