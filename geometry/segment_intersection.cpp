@@ -90,7 +90,7 @@ int main() {
           out << "Intersect outside of the segment" << endl;
 
     } else {
-        int detA = getDeterminant({ecA.a, ecB.b}, {ecB.a, ecB.b});
+        int detA = getDeterminant({ecA.a, ecA.b}, {ecB.a, ecB.b});
         int detB = getDeterminant({ecA.b, ecA.c}, {ecB.b, ecB.c});
 
         if(detA != 0 || detB != 0) {
@@ -98,10 +98,10 @@ int main() {
         } else {
             //they are on the same line
             out << "Points are on the same line" << endl;
-            if(!(isInsideSegment(B.first, A) && isInsideSegment(B.second, A))) {
+            if(!(isInsideSegment(B.first, A) || isInsideSegment(B.second, A))) {
                 out << "No intersection" << endl;
             } else {
-                out << max(A.first.first, B.first.first) << " " << min(A.first.second, B.second.second) << endl;
+                out << "(" << max(A.first.first, B.first.first) << ", " << max(A.first.second, B.first.second) << ") (" << min(A.second.first, B.second.first) << ", " << min(A.second.second, B.second.second) << ")" << endl;
             }
         }
     }
