@@ -209,8 +209,16 @@ void update(RenderWindow &window) {
   pair<double, double> pos;
   pos.first = externPoint.getPosition().x;
   pos.second = externPoint.getPosition().y;
-  if (poligon.size() >= 3)
-    cout << solve(poligon, pos) << '\n';
+  if (poligon.size() >= 3) {
+    string response = solve(poligon, pos);
+    Text status;
+    cout << response << endl;
+    status.setColor(Color::White);
+    status.setString(response);
+
+    status.setCharacterSize(24);
+    window.draw(status);
+  }
 
   window.draw(externPoint);
   window.display();
