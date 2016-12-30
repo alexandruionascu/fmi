@@ -139,8 +139,11 @@ vector<pair<double, double>> poligon;
 
 const int WIDTH = 1280;
 const int HEIGHT = 720;
+const int INITIAL_X = -50;
+const int INITIAL_Y = -50;
 
 vector<sf::CircleShape> points;
+CircleShape externPoint(10.0f);
 Texture wallTexture;
 int pointIndex = 0;
 
@@ -149,13 +152,13 @@ void init(ConvexShape &polygon) {
   polygon.setOutlineColor(Color::Red);
   polygon.setOutlineThickness(3.0f);
   polygon.setPointCount(0);
+  externPoint.setFillColor(Color::Magenta);
   // cout << "CODE " << wallTexture.loadFromFile("wall.jpg") << endl;
 }
 
 void handleClick(RenderWindow &window) {
   // left mouse button is pressed: shoot
   sf::Vector2i localPosition = sf::Mouse::getPosition(window);
-  cout << localPosition.x << " " << localPosition.y << endl;
   if (localPosition.x <= 0 || localPosition.y <= 0)
     return;
   if (localPosition.x >= WIDTH || localPosition.y >= HEIGHT)
@@ -165,6 +168,11 @@ void handleClick(RenderWindow &window) {
   point.setFillColor(Color::Red);
   points.push_back(point);
   pointIndex++;
+}
+
+void handleRightClick(RenderWindow &window) {
+  Vector2i localPosition = sf::Mouse::getPosition(window);
+  externPoint.setPosition(Vector2f(localPosition.x, localPosition.y));
 }
 
 void update(RenderWindow &window) {
@@ -197,9 +205,14 @@ void update(RenderWindow &window) {
   for (auto p : points) {
     poligon.push_back(make_pair(p.getPosition().x, p.getPosition().y));
   }
-  if (poligon.size() >= 3)
-    cout << solve(poligon, {500, 500}) << '\n';
 
+  pair<double, double> pos;
+  pos.first = externPoint.getPosition().x;
+  pos.second = externPoint.getPosition().y;
+  if (poligon.size() >= 3)
+    cout << solve(poligon, pos) << '\n';
+
+  window.draw(externPoint);
   window.display();
 }
 
@@ -208,10 +221,16 @@ void renderWindow(RenderWindow &window) {
   while (window.isOpen()) {
     Event event;
     while (window.pollEvent(event)) {
-      if (event.type == sf::Event::Closed)
+      if (event.type == sf::Event::Closed) {
         window.close();
+      }
+
       if (Mouse::isButtonPressed(Mouse::Left)) {
         handleClick(window);
+      }
+
+      if (Mouse::isButtonPressed(Mouse::Right)) {
+        handleRightClick(window);
       }
 
       if (Keyboard::isKeyPressed(Keyboard::C)) {
@@ -223,6 +242,7 @@ void renderWindow(RenderWindow &window) {
 }
 
 int main() {
+  externPoint.setPosition(INITIAL_X, INITIAL_Y);
   ContextSettings settings;
   settings.antialiasingLevel = 8;
   RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Relative Position",
