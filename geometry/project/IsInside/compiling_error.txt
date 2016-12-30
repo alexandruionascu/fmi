@@ -1,0 +1,69 @@
+/tmp/ccp0LNdL.o: In function `init()':
+main.cpp:(.text+0x102f): undefined reference to `sf::Color::Blue'
+main.cpp:(.text+0x1039): undefined reference to `sf::Shape::setFillColor(sf::Color const&)'
+main.cpp:(.text+0x103e): undefined reference to `sf::Color::Red'
+main.cpp:(.text+0x1048): undefined reference to `sf::Shape::setOutlineColor(sf::Color const&)'
+main.cpp:(.text+0x105a): undefined reference to `sf::Shape::setOutlineThickness(float)'
+main.cpp:(.text+0x1069): undefined reference to `sf::ConvexShape::setPointCount(unsigned long)'
+main.cpp:(.text+0x10ab): undefined reference to `sf::Texture::loadFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sf::Rect<int> const&)'
+/tmp/ccp0LNdL.o: In function `handleClick(sf::RenderWindow&)':
+main.cpp:(.text+0x1166): undefined reference to `sf::Mouse::getPosition(sf::Window const&)'
+main.cpp:(.text+0x1203): undefined reference to `sf::CircleShape::CircleShape(float, unsigned long)'
+main.cpp:(.text+0x1232): undefined reference to `sf::Transformable::setPosition(float, float)'
+main.cpp:(.text+0x123e): undefined reference to `sf::Color::Red'
+main.cpp:(.text+0x1246): undefined reference to `sf::Shape::setFillColor(sf::Color const&)'
+main.cpp:(.text+0x1271): undefined reference to `sf::ConvexShape::setPointCount(unsigned long)'
+main.cpp:(.text+0x12b8): undefined reference to `sf::ConvexShape::setPoint(unsigned long, sf::Vector2<float> const&)'
+/tmp/ccp0LNdL.o: In function `update(sf::RenderWindow&)':
+main.cpp:(.text+0x135d): undefined reference to `sf::Color::Color(unsigned char, unsigned char, unsigned char, unsigned char)'
+main.cpp:(.text+0x137a): undefined reference to `sf::RenderTarget::clear(sf::Color const&)'
+main.cpp:(.text+0x138a): undefined reference to `sf::RenderStates::Default'
+main.cpp:(.text+0x1397): undefined reference to `sf::RenderTarget::draw(sf::Drawable const&, sf::RenderStates const&)'
+main.cpp:(.text+0x143f): undefined reference to `sf::RenderStates::Default'
+main.cpp:(.text+0x144a): undefined reference to `sf::RenderTarget::draw(sf::Drawable const&, sf::RenderStates const&)'
+main.cpp:(.text+0x14ba): undefined reference to `sf::Transformable::getPosition() const'
+main.cpp:(.text+0x14c5): undefined reference to `sf::Vertex::Vertex(sf::Vector2<float> const&)'
+main.cpp:(.text+0x14ea): undefined reference to `sf::Transformable::getPosition() const'
+main.cpp:(.text+0x14f5): undefined reference to `sf::Vertex::Vertex(sf::Vector2<float> const&)'
+main.cpp:(.text+0x150d): undefined reference to `sf::RenderStates::Default'
+main.cpp:(.text+0x151f): undefined reference to `sf::RenderTarget::draw(sf::Vertex const*, unsigned long, sf::PrimitiveType, sf::RenderStates const&)'
+main.cpp:(.text+0x15c9): undefined reference to `sf::Transformable::getPosition() const'
+main.cpp:(.text+0x15e0): undefined reference to `sf::Transformable::getPosition() const'
+main.cpp:(.text+0x165b): undefined reference to `sf::Window::display()'
+/tmp/ccp0LNdL.o: In function `renderWindow(sf::RenderWindow&)':
+main.cpp:(.text+0x1700): undefined reference to `sf::Window::isOpen() const'
+main.cpp:(.text+0x1717): undefined reference to `sf::Window::pollEvent(sf::Event&)'
+main.cpp:(.text+0x172e): undefined reference to `sf::Window::close()'
+main.cpp:(.text+0x1738): undefined reference to `sf::Mouse::isButtonPressed(sf::Mouse::Button)'
+/tmp/ccp0LNdL.o: In function `main':
+main.cpp:(.text+0x17f0): undefined reference to `sf::String::String(char const*, std::locale const&)'
+main.cpp:(.text+0x180e): undefined reference to `sf::VideoMode::VideoMode(unsigned int, unsigned int, unsigned int)'
+main.cpp:(.text+0x1841): undefined reference to `sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&)'
+main.cpp:(.text+0x1887): undefined reference to `sf::RenderWindow::~RenderWindow()'
+main.cpp:(.text+0x18dd): undefined reference to `sf::RenderWindow::~RenderWindow()'
+/tmp/ccp0LNdL.o: In function `__static_initialization_and_destruction_0(int, int)':
+main.cpp:(.text+0x1a94): undefined reference to `sf::Texture::Texture()'
+main.cpp:(.text+0x1aa3): undefined reference to `sf::Texture::~Texture()'
+main.cpp:(.text+0x1ab7): undefined reference to `sf::ConvexShape::ConvexShape(unsigned long)'
+/tmp/ccp0LNdL.o: In function `sf::Transformable::Transformable(sf::Transformable const&)':
+main.cpp:(.text._ZN2sf13TransformableC2ERKS0_[_ZN2sf13TransformableC5ERKS0_]+0xd): undefined reference to `vtable for sf::Transformable'
+/tmp/ccp0LNdL.o: In function `sf::VertexArray::VertexArray(sf::VertexArray const&)':
+main.cpp:(.text._ZN2sf11VertexArrayC2ERKS0_[_ZN2sf11VertexArrayC5ERKS0_]+0x25): undefined reference to `vtable for sf::VertexArray'
+/tmp/ccp0LNdL.o: In function `sf::Shape::Shape(sf::Shape const&)':
+main.cpp:(.text._ZN2sf5ShapeC2ERKS0_[_ZN2sf5ShapeC5ERKS0_]+0x40): undefined reference to `vtable for sf::Shape'
+main.cpp:(.text._ZN2sf5ShapeC2ERKS0_[_ZN2sf5ShapeC5ERKS0_]+0x4c): undefined reference to `vtable for sf::Shape'
+main.cpp:(.text._ZN2sf5ShapeC2ERKS0_[_ZN2sf5ShapeC5ERKS0_]+0x182): undefined reference to `sf::Transformable::~Transformable()'
+/tmp/ccp0LNdL.o: In function `sf::CircleShape::CircleShape(sf::CircleShape const&)':
+main.cpp:(.text._ZN2sf11CircleShapeC2ERKS0_[_ZN2sf11CircleShapeC5ERKS0_]+0x24): undefined reference to `vtable for sf::CircleShape'
+main.cpp:(.text._ZN2sf11CircleShapeC2ERKS0_[_ZN2sf11CircleShapeC5ERKS0_]+0x30): undefined reference to `vtable for sf::CircleShape'
+/tmp/ccp0LNdL.o: In function `sf::ConvexShape::~ConvexShape()':
+main.cpp:(.text._ZN2sf11ConvexShapeD2Ev[_ZN2sf11ConvexShapeD5Ev]+0xd): undefined reference to `vtable for sf::ConvexShape'
+main.cpp:(.text._ZN2sf11ConvexShapeD2Ev[_ZN2sf11ConvexShapeD5Ev]+0x19): undefined reference to `vtable for sf::ConvexShape'
+main.cpp:(.text._ZN2sf11ConvexShapeD2Ev[_ZN2sf11ConvexShapeD5Ev]+0x3f): undefined reference to `sf::Shape::~Shape()'
+/tmp/ccp0LNdL.o: In function `sf::CircleShape::~CircleShape()':
+main.cpp:(.text._ZN2sf11CircleShapeD2Ev[_ZN2sf11CircleShapeD5Ev]+0xd): undefined reference to `vtable for sf::CircleShape'
+main.cpp:(.text._ZN2sf11CircleShapeD2Ev[_ZN2sf11CircleShapeD5Ev]+0x19): undefined reference to `vtable for sf::CircleShape'
+main.cpp:(.text._ZN2sf11CircleShapeD2Ev[_ZN2sf11CircleShapeD5Ev]+0x2d): undefined reference to `sf::Shape::~Shape()'
+/tmp/ccp0LNdL.o: In function `sf::VertexArray::~VertexArray()':
+main.cpp:(.text._ZN2sf11VertexArrayD2Ev[_ZN2sf11VertexArrayD5Ev]+0xd): undefined reference to `vtable for sf::VertexArray'
+collect2: error: ld returned 1 exit status
