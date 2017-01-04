@@ -1,81 +1,73 @@
-#include<dirent.h>
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<unistd.h>
-#include<sys/stat.h>
-#include<errno.h>
+#include <dirent.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
-void printFile(char const* fileName, int depth) {
-  for(int i = 1; i <= depth; i++) {
+void printFile(char const *fileName, int depth) {
+  for (int i = 1; i <= depth; i++) {
     printf("----");
   }
 
   printf("%s\n", fileName);
 }
 
-int isValid(char const* dirName) {
-  if(strcmp(dirName, ".") == 0 )
+int isValid(char const *dirName) {
+  if (strcmp(dirName, ".") == 0)
     return 0;
 
-  if(strcmp(dirName, "..") == 0)
+  if (strcmp(dirName, "..") == 0)
     return 0;
 
   return 1;
 }
 
 void showErrorAndExit() {
-  printf("Error reading the directory...\n");
-  if(errno == 24) {
-    printf("Too many files \n");
-  }
+  printf("Invalid directory...\n");
   exit(EXIT_FAILURE);
 }
 
-void listDirectory(char const* dirName, int depth) {
+void listDirectory(char const *dirName, int depth) {
   chdir(dirName);
-  DIR* directory = opendir(".");
+  DIR *directory = opendir(".");
 
-  if(!directory) {
+  if (!directory) {
     showErrorAndExit();
   }
 
   printFile(dirName, depth);
 
-  struct dirent* entry = readdir(directory);
+  struct dirent *entry = readdir(directory);
 
-  while(entry != NULL) {
+  while (entry != NULL) {
     struct stat buffer;
     int status;
     status = lstat(entry->d_name, &buffer);
 
-    if(isValid(entry->d_name)) {
-      if(status == 0 && S_ISDIR(buffer.st_mode)) {
+    if (isValid(entry->d_name)) {
+      if (status == 0 && S_ISDIR(buffer.st_mode)) {
         listDirectory(entry->d_name, depth + 1);
       } else {
         printFile(entry->d_name, depth);
       }
     }
 
-
     entry = readdir(directory);
   }
 
+  closedir(directory);
   chdir("..");
 }
 
-void treeF(char const* dirName) {
-  listDirectory(dirName, 0);
-}
+void treeF(char const *dirName) { listDirectory(dirName, 0); }
 
-
-
-int main(int argc, char** argv) {
-  if(argc < 2) {
+int main(int argc, char **argv) {
+  if (argc < 2) {
     showErrorAndExit();
   }
 
   treeF(argv[1]);
-
-  return 0;
+  exit(EXIT_SUCCESS);
 }
