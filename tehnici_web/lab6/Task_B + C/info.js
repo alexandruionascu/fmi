@@ -12,6 +12,12 @@ var Person = function(firstName, secondName, cnp, birthDay) {
     return obj.firstName + " " + obj.secondName + " - CNP: " + obj.cnp + " - data nasterii : " + obj.birthDay.toString();
   }
 
+  obj.getAge =  function() {
+    var ageDifMs = Date.now() - obj.birthDay.getTime();
+    var ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
   return obj;
 };
 
@@ -34,7 +40,6 @@ addButton.addEventListener("click", function() {
 
 var listButton = document.getElementById('list-btn');
 listButton.addEventListener("click", function() {
-  alert(persons.length + "Persons" );
   var newInfo = "";
   for (var i = 0; i < persons.length; i++) {
     newInfo += persons[i].toString();
@@ -42,4 +47,18 @@ listButton.addEventListener("click", function() {
   }
 
   personsContainer.innerHTML = newInfo;
+});
+
+var filterButton = document.getElementById('filter-btn');
+filterButton.addEventListener("click", function() {
+  var age = parseInt(prompt("introduceti varsta"));
+  var result = "";
+  for (var i = 0; i < persons.length; i++) {
+    if (persons[i].getAge() < age) {
+      result += persons[i].toString();
+      result += "\n";
+    }
+  }
+
+  alert(result);
 });
