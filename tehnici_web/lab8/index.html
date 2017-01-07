@@ -1,0 +1,211 @@
+<html>
+
+<head>
+    <style type="text/css">
+        .bgclr {
+            background-color: white;
+            color: black;
+            font-weight: bold;
+        }
+
+        h1 {
+            margin-left: 70px;
+        }
+
+        form li {
+            list-style: none;
+            margin-bottom: 5px;
+        }
+
+        form ul li label {
+            float: left;
+            clear: left;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        form ul li input,
+        select,
+        span {
+            float: left;
+            margin-bottom: 10px;
+        }
+
+        form textarea {
+            float: left;
+            width: 350px;
+            height: 150px;
+        }
+
+        [type="submit"] {
+            clear: left;
+            margin: 20px 0 0 230px;
+            font-size: 18px
+        }
+
+        p {
+            margin-left: 70px;
+            font-weight: bold;
+        }
+
+        .style-blue {
+            color: white;
+            background-color: blue;
+        }
+
+        .style-red {
+            color: white;
+            background-color: red;
+        }
+    </style>
+
+    <script language="JavaScript">
+        <!-- Begin
+        // Insert number of questions
+        var numQues = 4;
+
+        // Insert number of choices in each question
+        var numChoi = 3;
+
+        // Insert number of questions displayed in answer area
+        var answers = new Array(4);
+
+        // Insert answers to questions
+        answers[0] = "2";
+        answers[1] = "Nu";
+        answers[2] = "Productie proprie";
+        answers[3] = "Ceai";
+
+        // Do not change anything below here ...
+        function getScore(form) {
+            var score = 0;
+            var currElt;
+            var currSelection;
+            for (i = 0; i < numQues; i++) {
+                currElt = i * numChoi;
+                for (j = 0; j < numChoi; j++) {
+                    currSelection = form.elements[currElt + j];
+                    if (currSelection.checked) {
+                        if (currSelection.value == answers[i]) {
+                            score++;
+                            break;
+                        }
+                    }
+                }
+            }
+            score = Math.round(score / numQues * 100);
+            form.percentage.value = score + "%";
+            var correctAnswers = "";
+            for (i = 1; i <= numQues; i++) {
+                correctAnswers += i + ". " + answers[i - 1] + "\r\n";
+            }
+            form.solutions.value = correctAnswers;
+        }
+        //  End -->
+    </script>
+</head>
+
+<body>
+    <!-- First Form -->
+    <form id="contact-form">
+        Name:<br>
+        <input type="text" name="name"><br>Email:<br>
+        <input type="text" name="email">
+        <input type="submit" value="Send">
+    </form>
+
+
+
+    <h3>Calif Quiz</h3>
+
+    <form name="quiz">
+        1. Cate boutiquri Calif sunt?
+        <ul style="margin-top: 1pt">
+            <li><input type="radio" name="q1" value="1 Boutique">1 Boutique</li>
+            <li><input type="radio" name="q1" value="2 Boutiquri">2 Boutiqueuri</li>
+            <li><input type="radio" name="q1" value="3 Boutiquri">3 Boutiqueuri</li>
+        </ul>
+
+        2. Contine Kebabul clasic cascaval?
+        <ul style="margin-top: 1pt">
+            <li><input type="radio" name="q2" value="Da">Da</li>
+            <li><input type="radio" name="q2" value="Nu">Nu</li>
+            <li><input type="radio" name="q2" value="Doar Dill Kebab">Doar Dil Kebab</li>
+        </ul>
+        3. De unde procura Calif
+        <ul style="margin-top: 1pt">
+            <li><input type="radio" name="q3" value="Productie proprie">Productie proprie</li>
+            <li><input type="radio" name="q3" value="China">China</li>
+            <li><input type="radio" name="q3" value="SUA">SUA</li>
+        </ul>
+        4. Ce se ofera din partea casei?
+        <ul style="margin-top: 1pt">
+            <li><input type="radio" name="q4" value="Limonada">Limonada</li>
+            <li><input type="radio" name="q4" value="Ceai">Ceai</li>
+            <li><input type="radio" name="q4" value="Airan">Airan</li>
+        </ul>
+
+        <input type="button" value="Afla scorul" onClick="getScore(this.form)">
+        <input type="reset" value="Sterge Raspunsuri">
+        <p> Scor = <strong><input class="bgclr" type="text" size="5" name="percentage" disabled></strong><br><br>Raspunsuri corecte:<br>
+            <textarea class="bgclr" name="solutions" wrap="virtual" rows="4" cols="30" disabled>
+</textarea>
+    </form>
+
+
+    <!-- 3rd Form -->
+    <form id="buttons-form">
+        N:<br>
+        <input type="text" id="n" name="n"><br>Style:<br>
+        <select id="button-style" name="buttonstyle">
+          <option value="style-blue">Blue</option>
+          <option value="style-red">Red</option>
+        </select>
+        <input type="submit" value="Create">
+    </form>
+
+    <div id="buttons"></div>
+
+    <!-- 4rth Form -->
+    <form name='registration' onSubmit="return formValidation();">
+        <ul>
+            <li><label for="userid">User id:</label></li>
+            <li><input type="text" name="userid" size="12" /></li>
+            <li><label for="passid">Password:</label></li>
+            <li><input type="password" name="passid" size="12" /></li>
+            <li><label for="username">Name:</label></li>
+            <li><input type="text" name="username" size="50" /></li>
+            <li><label for="address">Address:</label></li>
+            <li><input type="text" name="address" size="50" /></li>
+            <li><label for="country">Country:</label></li>
+            <li><select name="country">
+        <option selected="" value="Default">(Please select a country)</option>
+        <option value="AF">Australia</option>
+        <option value="AL">Canada</option>
+        <option value="DZ">India</option>
+        <option value="AS">Russia</option>
+        <option value="AD">USA</option>
+        </select></li>
+            <li><label for="zip">ZIP Code:</label></li>
+            <li><input type="text" name="zip" /></li>
+            <li><label for="email">Email:</label></li>
+            <li><input type="text" name="email" size="50" /></li>
+            <li><label id="gender">Sex:</label></li>
+            <li><input type="radio" name="msex" value="Male" /><span>Male</span></li>
+            <li><input type="radio" name="fsex" value="Female" /><span>Female</span></li>
+            <li><label>Language:</label></li>
+            <li><input type="checkbox" name="en" value="en" checked /><span>English</span></li>
+            <li><input type="checkbox" name="nonen" value="noen" /><span>Non English</span></li>
+            <li><label for="desc">About:</label></li>
+            <li><textarea name="desc" id="desc"></textarea></li>
+            <li><input type="submit" name="submit" value="Submit" /></li>
+        </ul>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
