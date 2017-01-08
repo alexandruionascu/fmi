@@ -7,9 +7,6 @@ import java.util.StringJoiner;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Narcis on 05.01.2017.
- */
 public class Binary {
 
     public static class Element{

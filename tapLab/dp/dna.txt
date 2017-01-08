@@ -1,0 +1,7 @@
+GATC
+TCAG
+2
+2
+AC 1
+GT 1
+3
