@@ -25,36 +25,55 @@ public class Cubes {
     }
 
     Collections.sort(cubes, new Comparator<Cube>(){
+      @Override
       public int compare(Cube x, Cube y) {
         if (x.getSize() > y.getSize())
           return 1;
-        else if(x.getSize() < y.getSize())
+        if(x.getSize() < y.getSize())
           return -1;
-        else return 0;
+        return 0;
       }
     });
 
     int dp[] = new int[n];
-    for(int i = 0; i < n; i++) {
-      dp[i] = cubes.get(i).getSize();
-    }
+    int count[] = new int[n];
+    int next[] = new int[n];
 
     for(int i = 0; i < n; i++) {
+      dp[i] = cubes.get(i).getSize();
+      count[i] = 1;
+    }
+
+    for(int i = n - 1; i >= 0; i--) {
       int max = 0;
-      for(int j = 0; j < i; j++) {
-        if(cubes.get(i).getColor() != cubes.get(j).getColor() && cubes.get(i).getSize() > cubes.get(j).getSize()) {
+      for(int j = i + 1; j < n; j++) {
+        if(cubes.get(i).getColor() != cubes.get(j).getColor() && cubes.get(i).getSize() < cubes.get(j).getSize()) {
           if(max < dp[j]) {
             max = dp[j];
+            count[i] += count[j];
+            next[i] = j;
+          } else if(max == dp[j]) {
+            count[i] = count[j];
           }
         }
       }
-
       dp[i] += max;
     }
 
+    int max = 0;
+    int index = 0;
     for(int i = 0; i < n; i++) {
-      System.out.print(dp[i] + " ");
+      if(dp[i] >= max) {
+        max = dp[i];
+        index = i;
+      }
     }
-    System.out.print("\n");
+
+    int maxCount = count[index];
+    while(index != 0) {
+      System.out.println(cubes.get(index).getSize() + " " + cubes.get(index).getColor());
+      index = next[index];
+    }
+    System.out.println(maxCount);
   }
 }
