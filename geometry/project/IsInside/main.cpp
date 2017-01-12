@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <unistd.h>
 using namespace std;
 using namespace sf;
 
@@ -106,10 +107,7 @@ string solve(vector<pair<double, double>> pol, pair<double, double> point) {
   pol = vector<pair<double, double>>(setpol.begin(), setpol.end());
 
   re_order(pol);
-  for (auto it : pol) {
-    ppair(it);
-  }
-  ppair(point);
+
   if (is_on_sides(pol, point).first) {
     return is_on_sides(pol, point).second;
   }
@@ -165,7 +163,6 @@ void init(ConvexShape& polygon) {
   polygon.setOutlineThickness(3.0f);
   polygon.setPointCount(0);
   externPoint.setFillColor(Color::Magenta);
-  // cout << "CODE " << wallTexture.loadFromFile("wall.jpg") << endl;
 }
 
 void handleClick(RenderWindow& window) {
@@ -180,6 +177,7 @@ void handleClick(RenderWindow& window) {
   point.setFillColor(Color::Red);
   points.push_back(point);
   pointIndex++;
+  sleep(1);
 }
 
 void handleRightClick(RenderWindow& window) {
@@ -223,14 +221,14 @@ void update(RenderWindow& window) {
   pos.second = externPoint.getPosition().y;
   if (poligon.size() >= 3) {
     string response = solve(poligon, pos);
-    Text status;
 
-    cout << response << endl;
-    status.setColor(Color::White);
-    status.setString(response);
-
-    status.setCharacterSize(24);
-    window.draw(status);
+    if (response == point_inside) {
+      externPoint.setFillColor(Color::Red);
+    } else if (response == on_sides) {
+      externPoint.setFillColor(Color::White);
+    } else {
+      externPoint.setFillColor(Color::Green);
+    }
   }
 
   window.draw(externPoint);
