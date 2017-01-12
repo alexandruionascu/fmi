@@ -1,18 +1,20 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <set>
 using namespace std;
 using namespace sf;
 
 namespace {
-const string not_inside_or_on_sides = "Nu e in poligon ,nici pe laturi";
-const string on_sides = "E pe latura";
-const string point_inside = "Punctul e in interior";
-const string point_outside = "Punctul e in exterior";
+const string not_inside_or_on_sides = "Punctul e in exterior1";
+const string on_sides = "Punctul e pe latura2";
+const string point_inside = "Punctul e in interior3";
+const string point_outside = "Punctul e in exterior4";
 const double eps = 0.0000000001;
 }
 
-double det(pair<double, double> p1, pair<double, double> p2,
+double det(pair<double, double> p1,
+           pair<double, double> p2,
            pair<double, double> p3) {
   p2 = {p2.first - p1.first, p2.second - p1.second};
   p3 = {p3.first - p1.first, p3.second - p1.second};
@@ -21,14 +23,10 @@ double det(pair<double, double> p1, pair<double, double> p2,
 }
 
 bool compx(pair<double, double> p1, pair<double, double> p2) {
-  double my_det = det({0, 0}, p1, p2);
-  if (my_det == 0) {
-    return p1 < p2;
-  }
-  return det < 0;
+  return det(make_pair(0, 0), p1, p2) > eps;
 }
 
-void re_order(vector<pair<double, double>> &pol) {
+void re_order(vector<pair<double, double>>& pol) {
   random_shuffle(pol.begin(), pol.end());
   for (int i = 1; i < pol.size(); ++i) {
     pol[i] = {pol[i].first - pol[0].first, pol[i].second - pol[0].second};
@@ -40,7 +38,8 @@ void re_order(vector<pair<double, double>> &pol) {
   }
 }
 
-bool is_on_seg(pair<double, double> p1, pair<double, double> p2,
+bool is_on_seg(pair<double, double> p1,
+               pair<double, double> p2,
                pair<double, double> p3) {
   if (det(p1, p2, p3) == 0) {
     if (p3.first >= min(p1.first, p2.first) &&
@@ -53,9 +52,12 @@ bool is_on_seg(pair<double, double> p1, pair<double, double> p2,
   }
   return false;
 }
-double mdl(double val) { return ((val < 0.0) ? -val : val); }
+double mdl(double val) {
+  return ((val < 0.0) ? -val : val);
+}
 
-double area(pair<double, double> p1, pair<double, double> p2,
+double area(pair<double, double> p1,
+            pair<double, double> p2,
             pair<double, double> p3) {
   return mdl(det(p1, p2, p3));
 }
@@ -66,14 +68,15 @@ bool is_equal_eps(double v1, double v2) {
   return res;
 }
 
-bool is_point_inside_triangle(pair<double, double> p1, pair<double, double> p2,
+bool is_point_inside_triangle(pair<double, double> p1,
+                              pair<double, double> p2,
                               pair<double, double> p3,
                               pair<double, double> point) {
-
   double a1 = area(p1, p2, point);
   double a2 = area(p2, p3, point);
   double a3 = area(p3, p1, point);
   double area_total = area(p1, p2, p3);
+
   return (is_equal_eps(a1 + a2 + a3, area_total));
 }
 
@@ -81,7 +84,7 @@ string to_str(pair<double, double> point) {
   return "(" + to_string(point.first) + "," + to_string(point.second) + ")";
 }
 
-pair<bool, string> is_on_sides(vector<pair<double, double>> &pol,
+pair<bool, string> is_on_sides(vector<pair<double, double>>& pol,
                                pair<double, double> point) {
   for (int i = 0; i < pol.size(); ++i)
     if (is_on_seg(pol[i], pol[(i + 1) % pol.size()], point) == 1) {
@@ -92,12 +95,21 @@ pair<bool, string> is_on_sides(vector<pair<double, double>> &pol,
   return make_pair(false, "");
 }
 
-bool sign(double val) { return (val <= 0.0); }
+bool sign(double val) {
+  return (val <= 0.0);
+}
 
-#define ppair(x) cout << x.first << " " << x.second << '\n';
+#define ppair(x) cout << x.first << " " << x.second << endl;
 
-string solve(vector<pair<double, double>> &pol, pair<double, double> point) {
+string solve(vector<pair<double, double>> pol, pair<double, double> point) {
+  set<pair<double, double>> setpol(pol.begin(), pol.end());
+  pol = vector<pair<double, double>>(setpol.begin(), setpol.end());
+
   re_order(pol);
+  for (auto it : pol) {
+    ppair(it);
+  }
+  ppair(point);
   if (is_on_sides(pol, point).first) {
     return is_on_sides(pol, point).second;
   }
@@ -117,7 +129,7 @@ string solve(vector<pair<double, double>> &pol, pair<double, double> point) {
 
   int left = 1, right = pol.size() - 1;
 
-  while (left - right > 1) {
+  while (right - left > 1) {
     int mid = (left + right) / 2;
 
     if (sign(det(pol[0], pol[mid], point)) ==
@@ -147,7 +159,7 @@ CircleShape externPoint(10.0f);
 Texture wallTexture;
 int pointIndex = 0;
 
-void init(ConvexShape &polygon) {
+void init(ConvexShape& polygon) {
   polygon.setFillColor(Color::Blue);
   polygon.setOutlineColor(Color::Red);
   polygon.setOutlineThickness(3.0f);
@@ -156,7 +168,7 @@ void init(ConvexShape &polygon) {
   // cout << "CODE " << wallTexture.loadFromFile("wall.jpg") << endl;
 }
 
-void handleClick(RenderWindow &window) {
+void handleClick(RenderWindow& window) {
   // left mouse button is pressed: shoot
   sf::Vector2i localPosition = sf::Mouse::getPosition(window);
   if (localPosition.x <= 0 || localPosition.y <= 0)
@@ -170,12 +182,12 @@ void handleClick(RenderWindow &window) {
   pointIndex++;
 }
 
-void handleRightClick(RenderWindow &window) {
+void handleRightClick(RenderWindow& window) {
   Vector2i localPosition = sf::Mouse::getPosition(window);
   externPoint.setPosition(Vector2f(localPosition.x, localPosition.y));
 }
 
-void update(RenderWindow &window) {
+void update(RenderWindow& window) {
   window.clear();
 
   ConvexShape polygon;
@@ -212,6 +224,7 @@ void update(RenderWindow &window) {
   if (poligon.size() >= 3) {
     string response = solve(poligon, pos);
     Text status;
+
     cout << response << endl;
     status.setColor(Color::White);
     status.setString(response);
@@ -224,8 +237,10 @@ void update(RenderWindow &window) {
   window.display();
 }
 
-void clear() { points.clear(); }
-void renderWindow(RenderWindow &window) {
+void clear() {
+  points.clear();
+}
+void renderWindow(RenderWindow& window) {
   while (window.isOpen()) {
     Event event;
     while (window.pollEvent(event)) {
