@@ -1,0 +1,9 @@
+Ex1
+
+
+<body>
+  <h1> Titlu 1 </h1>
+  <h1> Titlu 2 </h1>
+
+  <input type="button">Afiseaza 1</input>
+  <input type="button">Afiseaza 2</input>
