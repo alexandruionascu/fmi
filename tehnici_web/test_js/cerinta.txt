@@ -7,3 +7,6 @@ Ex1
 
   <input type="button">Afiseaza 1</input>
   <input type="button">Afiseaza 2</input>
+
+Ex2. un formular, 2 inputuri, un submit, trebuie retinut blat cu local storage
+  la afiseaza le pui pe pagina sau ceva
