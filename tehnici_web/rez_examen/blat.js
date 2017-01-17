@@ -14,6 +14,12 @@ function addSwitchEvent(node) {
   });
 }
 
+function switchContent(firstNode, secondNode) {
+  var aux = firstNode.textContent;
+  firstNode.textContent = secondNode.textContent;
+  secondNode.textContent = aux;
+}
+
 
 for (var i = 0, item; item = firstList.childNodes[i]; ++i) {
   addSwitchEvent(item);
@@ -22,3 +28,15 @@ for (var i = 0, item; item = firstList.childNodes[i]; ++i) {
 for (var i = 0, item; item = secondList.childNodes[i]; ++i) {
   addSwitchEvent(item);
 }
+
+document.addEventListener('keypress', function(event) {
+  var firstItem = firstList.childNodes[event.key];
+  var secondItem = secondList.childNodes[event.key];
+
+  if(firstItem && secondItem) {
+    switchContent(firstItem, secondItem);
+  } else {
+    alert('Nu sunt suficiente');
+  }
+
+});
