@@ -2,6 +2,7 @@
 #define in f
 #define out cout
 #define EPS 0.000000001
+#define INF 2000000
 using namespace std;
 
 ifstream f("data.in");
@@ -19,36 +20,30 @@ struct Point {
 };
 
 struct Ecuation {
-  double a;
-  double b;
-  double c;
+  // position vector
+  Point position;
+  // offset by the origin
+  Point offset;
 
-  void printEcuation() {
-    cout << "a: " << a << " b: " << b << " c: " << c << "\n";
+  Ecuation(Point a, Point b) {
+    position = Point(b.x - a.x, b.y - a.y);
+    offset = a;
+  }
+
+  Point getIntersection(Ecuation ecuation) {
+    double parameter;
+    if (ecuation.position.x == 0) {
+      parameter =
+          (position.y + (offset.y - ecuation.offset.y)) / ecuation.position.y;
+    } else {
+      parameter =
+          (position.x + (offset.x - ecuation.offset.x)) / ecuation.position.x;
+    }
+
+    return Point(parameter * position.x + offset.x,
+                 parameter * position.y + offset.y);
   }
 };
-
-double getDeterminant(Point A, Point B) {
-  return A.x * B.y - A.y * B.x;
-}
-bool isEqual(double a, double b) {
-  if (abs(a - b) <= EPS)
-    return true;
-  else
-    return false;
-}
-
-Point getIntersection(Ecuation ecA, Ecuation ecB) {
-  int determinant = getDeterminant({ecA.a, ecA.b}, {ecB.a, ecB.b});
-
-  double x =
-      (double)-1 * (double)getDeterminant({ecA.c, ecA.b}, {ecB.c, ecB.b});
-  x /= (double)determinant;
-  double y =
-      (double)-1 * (double)getDeterminant({ecA.a, ecA.c}, {ecB.a, ecB.c});
-  y /= (double)determinant;
-  return Point(x, y);
-}
 
 double getDistance(Point A, Point B) {
   return sqrt((A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y));
@@ -63,52 +58,15 @@ struct Line {
     this->A2 = A2;
   }
 
-  double getSlope() {
-    if (A1.y == A2.y)
-      return 0;
-    if (A1.x == A2.x)
-      return 0;
-    return (A2.y - A1.y) / (A2.x - A1.x);
-  }
-
-  void printEcuation() { getEcuation().printEcuation(); }
-
   Line() {}
 
-  Ecuation getEcuation() {
-    Ecuation retValue;
-
-    if (A1.x == A2.x) {
-      retValue.a = 1;
-      retValue.b = 0;
-      retValue.c = -(A2.x);
-    } else if (A1.y == A2.y) {
-      retValue.a = 0;
-      retValue.b = 1;
-      retValue.c = -(A2.y);
-    } else {
-      retValue.a = getSlope();
-      retValue.b = -1;
-      retValue.c = (A2.y - getSlope() * A2.x);
-    }
-    return retValue;
-  }
-
-  Ecuation getPerpendicularEcuation() {
-    Ecuation ec = getEcuation();
-    double slope = getSlope();
-    if (slope == 0) {
-      ec.a = 1;
-      ec.b = 0;
-      ec.c = (double)-1 * ((A1.x + A2.x) / 2);
-      return ec;
-    }
-
-    slope = (double)-1 / getSlope();
-    ec.a = slope;
-    ec.b = -1;
-    ec.c = ((A1.y + A2.y) / 2) - slope * ((A1.x + A2.x) / 2);
-    return ec;
+  Ecuation getMediator() {
+    double midX = (A1.x + A2.x) / 2;
+    double midY = (A1.y + A2.y) / 2;
+    Ecuation ecuation(A1, A2);
+    ecuation.position = Point(ecuation.position.y * -1, ecuation.position.x);
+    ecuation.offset = Point(midX, midY);
+    return ecuation;
   }
 };
 
@@ -130,20 +88,25 @@ struct Triangle {
     this->A1A3 = Line(A1, A3);
   }
 
-  Point getCircumcircleOrigin() {
-    Line firstLine = Line(A1, A2);
-    Ecuation firstMediator = firstLine.getPerpendicularEcuation();
-    Line secondLine = Line(A2, A3);
-    Ecuation secondMediator = secondLine.getPerpendicularEcuation();
-    return getIntersection(firstMediator, secondMediator);
+  Point getOrigin() {
+    Ecuation firstMediator = A1A2.getMediator();
+    Ecuation secondMediator = A2A3.getMediator();
+
+    Point origin = firstMediator.getIntersection(secondMediator);
+    return origin;
   }
 
-  bool isInsideCircle(Point p) {
-    Point circleOrigin = getCircumcircleOrigin();
+  string isInsideCircle(Point p) {
+    Point circleOrigin = getOrigin();
     double radius = getDistance(circleOrigin, A1);
+
+    if (abs(radius - getDistance(p, circleOrigin)) <= EPS) {
+      return "The point is on circle ";
+    }
+
     if (getDistance(p, circleOrigin) <= radius + EPS)
-      return true;
-    return false;
+      return "The point is inside";
+    return "The point is outside.";
   }
 };
 
@@ -161,11 +124,28 @@ int main() {
 
   Triangle triangle(A1, A2, A3);
 
-  Point origin = triangle.getCircumcircleOrigin();
-  if (triangle.isInsideCircle(P))
-    out << "The Point is inside circumcircle. \n";
-  else
-    out << "The Point is outside circumcircle. \n";
+  out << triangle.isInsideCircle(P) << endl;
+  out << "ORIGIN " << triangle.getOrigin().x << " " << triangle.getOrigin().y
+      << endl;
+
+  Point A = A1;
+  Point B = A2;
+  Point C = A3;
+  Point D = P;
+
+  Line AB(A, B);
+  Line CD(C, D);
+
+  Line AD(A, D);
+  Line BC(B, C);
+
+  if (abs(getDistance(A, B) + getDistance(C, D)) -
+          (getDistance(A, D) + getDistance(B, C)) <=
+      EPS) {
+    out << "circumscriptible\n";
+  } else {
+    out << "not circumscriptible \n";
+  }
 
   return 0;
 }

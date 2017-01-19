@@ -28,7 +28,7 @@ bool compx(pair<double, double> p1, pair<double, double> p2) {
 }
 
 void re_order(vector<pair<double, double>>& pol) {
-  random_shuffle(pol.begin(), pol.end());
+  // random_shuffle(pol.begin(), pol.end());
   for (int i = 1; i < pol.size(); ++i) {
     pol[i] = {pol[i].first - pol[0].first, pol[i].second - pol[0].second};
   }
@@ -139,6 +139,9 @@ string solve(vector<pair<double, double>> pol, pair<double, double> point) {
   }
 
   if (is_point_inside_triangle(pol[0], pol[left], pol[left + 1], point)) {
+    cout << pol[0].first << " " << pol[0].second << " | " << pol[left].first
+         << " " << pol[left].second << " | " << pol[left + 1].first << " "
+         << pol[left + 1].second << endl;
     return point_inside;
   }
 
