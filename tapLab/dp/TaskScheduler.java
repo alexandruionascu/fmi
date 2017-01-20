@@ -26,7 +26,7 @@ public class TaskScheduler {
 			}
 			Arrays.sort(tasks);
 
-			dp = new int[ n + 1][ maxDeadline + 1];
+			dp = new int[n + 1][maxDeadline + 1];
 
 			for(int i = 0; i <= maxDeadline; i++){
 				dp[0][i] = 0;
@@ -44,7 +44,7 @@ public class TaskScheduler {
 			}
 
 			System.out.println(dp[n][maxDeadline]);
-			traceBack(n,maxDeadline);
+			traceBack(n, maxDeadline);
       System.out.print("\n");
     }
 

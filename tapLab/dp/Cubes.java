@@ -24,7 +24,7 @@ public class Cubes {
         cubes.add(cube);
     }
 
-    Collections.sort(cubes, new Comparator<Cube>(){
+    Collections.sort(cubes, new Comparator<Cube>() {
       @Override
       public int compare(Cube x, Cube y) {
         if (x.getSize() > y.getSize())
