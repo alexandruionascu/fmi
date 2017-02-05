@@ -2,7 +2,6 @@
 #define in f
 #define out cout
 #define EPS 0.000000001
-#define INF 2000000
 using namespace std;
 
 ifstream f("data.in");
@@ -31,17 +30,16 @@ struct Ecuation {
   }
 
   Point getIntersection(Ecuation ecuation) {
-    double parameter;
-    if (ecuation.position.x == 0) {
-      parameter =
-          (position.y + (offset.y - ecuation.offset.y)) / ecuation.position.y;
-    } else {
-      parameter =
-          (position.x + (offset.x - ecuation.offset.x)) / ecuation.position.x;
-    }
-
-    return Point(parameter * position.x + offset.x,
-                 parameter * position.y + offset.y);
+    double a1 = position.x;
+    double a2 = position.y;
+    double x1 = offset.x;
+    double x2 = ecuation.offset.x;
+    double y1 = offset.y;
+    double y2 = ecuation.offset.y;
+    double a3 = ecuation.position.x;
+    double a4 = ecuation.position.y;
+    double t1 = ((a3 * (y2 - y1)) - (a4 * (x2 - x1))) / (a2 * a3 - a1 * a4);
+    return Point(t1 * position.x + offset.x, t1 * position.y + offset.y);
   }
 };
 
@@ -91,6 +89,11 @@ struct Triangle {
   Point getOrigin() {
     Ecuation firstMediator = A1A2.getMediator();
     Ecuation secondMediator = A2A3.getMediator();
+
+    // cout << firstMediator.position.x << " " << firstMediator.position.y <<
+    // endl;
+    // cout << secondMediator.position.x << " " << secondMediator.position.y
+    //     << endl;
 
     Point origin = firstMediator.getIntersection(secondMediator);
     return origin;
