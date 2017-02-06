@@ -1,0 +1,302 @@
+---
+title: "Temă Probabilități și Statistică"
+author: "Alexandru Ionașcu, Grupa 235"
+date: "6 Februarie, 2017"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Exerciţiul 1
+Din șirul primelor 1000 de numere naturale se alege la întâmplare un număr. Fie A evenimentul ca numărul
+ales să fie divizibil cu 2, B evenimentul ca numărul ales să fie divizibil cu 3 iar C evenimentul ca numărul
+ales să se termine cu cifra zero. Ce reprezintă evenimentele:
+
+
+$$ a) C \cap (A \cup B) $$
+$$b) A \cap (B \cup C)$$
+$$c) (A \cap B) \cup (B \cap C)$$
+
+$$Fie \ n \ număr \ natural \ între \ 1 \ și \ 1000. $$
+$$ A \implies  2 \ | \ n  $$
+$$ B \implies  3 \ | \ n  $$
+$$ C \implies  10 \ | \ n  $$
+
+$$a) C \cap (A \cup B) \Leftrightarrow 20 \ | \ n \ sau \ 30 \ | \ n   $$
+$$b) A \cap (B \cup C) \Leftrightarrow 6 \ | \ n \ sau \ 10 \ | \ n $$
+$$c) (A \cap B) \cup (B \cap C) \Leftrightarrow 6 \ | \ n \ sau \ 20 \ | \ n $$
+
+# Exerciţiul 2
+a) Care este probabilitatea ca din 13 cărți oarecare 6 să fie de pică ?
+b) S-a amestecat un pachet de 36 de cărți de joc numerotate 1, 2, . . . , 36. Care este probabilitatea ca deasupra să fie cartea 1?
+$$ a) \frac{52}{4} = 13 \ cărți \ de \ pică $$
+$$ 52-13=39 \ cărți \ de \ alte \ culori $$
+$$ P(13,  6, 7) = \frac{\binom{13}{6} * \binom{39}{7}}{\binom{52}{13}} \approx 0.05$$
+$$b) \frac{(36-1)!}{36!} = \frac{35!}{36!} = 0.02 $$
+
+# Exerciţiul 3
+În urma unei anchete efectuate în rândul studenților anului 2 s-a constatat că probabilitatea ca unui student
+să îi placă disciplina Probabilități și Statistică este 0.8, respectiv disciplina Geometrie Computațională este 0.7,
+iar probabilitatea ca un student oarecare să îndrăgească ambele discipline este 0.6. Care este probabilitatea
+ca un student oarecare:
+
+ * să îndrăgească cel puțin una dintre cele două discipline
+ * să nu îi placă niciuna
+ * să îi placă disciplina Probabilități și Statistică și nu Geometrie Computațională
+ 
+$$ P_{GC} = 0.7 $$
+$$ P_{PS} = 0.8 $$
+$$ a) P_{PS \cup GC} = \frac{n_{PS} + n_{GC} - n_{PS \cap GC}}{N} = 0.9 $$
+$$ b) C(P_{PS \cup GC}) = 0.1 $$
+$$ c) P_{PS \backslash GC} = \frac{n_{PS} - n_{PS \cap GC}}{N} = 0.2 $$
+
+# Exerciţiul 4
+Se aruncă la întâmplare patru zaruri. Să se determine S.
+a) Probabilitatea ca o anumită fat , ă să apară cel puțin o dată.
+b) Probabilitatea de a obt , ine o anumită fat , ă o singură dată.
+
+$$a) P(n, a, n - a) = coeficientul \ lui \ t^a din \ Q(t)  $$
+$$ Q(t) = (p_1 t + q_1)(p_2 t + q_2) \ ... \ (p_n t + q_n) $$
+$$ 1 - P(4, 0, 4) = 1 - \frac{5^4}{6^4} = 0.5 $$
+
+$$ b) Pentru \  a \ obține \ o \ singură \  față: $$
+$$ 4 \cdot \frac{1}{6} \cdot \frac{5}{6} \cdot \frac{5}{6} \cdot \frac{5}{6} = 0.38 $$
+
+# Exerciţiul 5
+Într-o urnă sunt 24 de bile albe și 9 bile negre. Se extrag pe rând trei bile fără întoarcere. Care este
+probabilitatea ca bilele să fie extrase în ordinea alb, alb, negru? Dar alb, negru, alb? Dar negru, alb, alb ?
+Dar probabilitatea ca două din cele trei bile extrase să fie albe?
+
+$$ În \ total: \ 33 \ bile. $$
+$$ P_{aan} = \frac{24}{33} \cdot \frac{23}{32} \cdot \frac{9}{31} = 0.148 $$
+$$ P_{ana} = \frac{24}{33} \cdot \frac{9}{32} \cdot \frac{23}{31} = 0.148 $$
+$$ P_{naa} = \frac{9}{33} \cdot \frac{24}{32} \cdot \frac{23}{31} = 0.148 $$
+$$ P_{2/3 a} = P_{aan} + P_{ana} + P_{naa} = 0.445 $$
+
+
+# Exerciţiul 6
+Într-o fabrică lucrează trei mașini care realizează respectiv 30%, 25% și 45% din producție. Din producția
+primei mașini 1% sunt piese defecte, din producția celei de-a doua mașini 2% sunt piese defecte iar din
+producția ultimei mașini sunt 4% defecte. Se extrage la întâmplare o piesă. Care este probabilitatea ca piesa
+extrasă să fie defectă?
+
+$$ 0.3 P = \left\{ \begin{array}{rcl}
+\ 0.3 \cdot P \cdot 0.001 \ defecte \\0.3 \cdot P \cdot 0.99 \cdot P \ bune
+\end{array}\right. $$
+
+$$ 0.25 P = \left\{ \begin{array}{rcl}
+\ 0.25 \cdot P \cdot 0.002 \ defecte \\0.25 \cdot P \cdot 0.98 \cdot P \ bune
+\end{array}\right. $$
+
+$$ 0.45 P = \left\{ \begin{array}{rcl}
+\ 0.45 \cdot P \cdot 0.004 \ defecte \\0.45 \cdot P \cdot 0.96 \cdot P \ bune
+\end{array}\right. $$
+
+
+$$\frac{0.3P \cdot 0.01 + 0.25P \cdot 0.02 + 0.45P \cdot 0.04}{P} = 0.026 = 2,6\% $$
+
+
+# Exerciţiul 7
+Două variabile aleatoare independente au repartițiile:
+
+
+$$ X \sim \left(\begin{array}{ccc} 2 & 3 & 5 \\ 0.2 & 0.3 & 0.5 \end{array} \right) \\ $$
+  
+$$ Y \sim \left( \begin{array}{ccc} 1 & 4 & 6 \\ 0.6 & 0.2 & 0.2\end{array} \right) \\$$
+
+
+Să se scrie:
+<br />
+a) repartița sumei X + Y
+<br />
+b) repartița produsului XY
+
+$$a) X + Y = \left( \begin{array}{ccccccccc} 2 + 1 & 2 + 4 & 2 + 6 & 3 + 1 & 3 + 4 & 3 + 6 & 5 + 1 & 5 + 4 & 5 + 6 \\ 0.2 \cdot 0.6 & 0.2 \cdot 0.2 & 0.2 \cdot 0.2 & 0.3 \cdot 0.6 & 0.3 \cdot 0.2 & 0.3 \cdot 0.2 & 0.5  \cdot 0.6 & 0.5 \cdot 0.2 & 0.5 \cdot 0.2 \end{array} \right) $$ 
+$$ X + Y = \left( \begin{array}{ccccccccc} 3 & 6 & 8 & 4 & 7 & 9 & 6 & 9 & 11 \\ 0.12 & 0.04 & 0.04 & 0.18 & 0.06 & 0.06 & 0.3 & 0.1 & 0.1 \end{array} \right) $$
+
+$$b) X \cdot Y = \left( \begin{array}{ccccccccc} 2 \cdot 1 & 2 \cdot 4 & 2 \cdot 6 & 3 \cdot 1 & 3 \cdot 4 & 3 \cdot 6 & 5 \cdot 1 & 5 \cdot 4 & 5 \cdot 6 \\ 0.2 \cdot 0.6 & 0.2 \cdot 0.2 & 0.2 \cdot 0.2 & 0.3 \cdot 0.6 & 0.3 \cdot 0.2 & 0.3 \cdot 0.2 & 0.5  \cdot 0.6 & 0.5 \cdot 0.2 & 0.5 \cdot 0.2 \end{array} \right) $$
+$$ X \cdot Y  = \left( \begin{array}{ccccccccc} 2 & 8 & 12 & 3 & 12 & 18 & 5 & 20 & 30 \\ 0.12 & 0.04 & 0.04 & 0.18 & 0.06 & 0.06 & 0.3 & 0.1 & 0.1 \end{array} \right) $$
+
+# Exercițiul 8 
+Variabila aleatoare X are repartiția:
+$$ X \sim \left(\begin{array}{ccc}-1 & 0 & 1 \\ 0.3 & 0.2 & 5 \end{array} \right) $$
+
+Să se scrie repartițiile variabilelor 2X + 3, X 2 , X 3 , X + X 2 și să se calculeze P(X > - 13 ), P(X < 14 |X >= -12 ).
+
+$$ 2X + 3 = \left(\begin{array}{ccc} 1 & 3 & 5 \\ 0.3 & 0.2 & 5 \end{array} \right) $$
+$$ X^2 = \left(\begin{array}{ccc} 1 & 0 & 1 \\ 0.3 & 0.2 & 5 \end{array} \right) $$
+
+
+$$ X^3 = \left(\begin{array}{ccc} -1 & 0 & 1 \\ 0.3 & 0.2 & 5 \end{array} \right) = X $$
+
+$$ X^2 + X = \left(\begin{array}{cccc} -1 & 0 & 1 & 2 \\ 0.06 & 0.28 & 0.26 & 0.4 \end{array} \right) $$
+$$P(X > - \frac{1}{3}) = 1 - P(X \leqslant - \frac{1}{3}) = 1 - 0.3 = 0.7 $$
+$$ Daca \ x < -1 \implies P(X \leqslant x) = 0. $$
+$$ Daca \ -1 \leqslant x < 0 \implies P(X \leqslant x) = 0.3. $$
+$$ Daca \ 0 \leqslant x < 1 \implies P(X \leqslant x) = 0.3 + 0.2 $$
+$$ Daca \ x \geqslant 1 \implies P(X \leqslant x) = 1. $$
+$$ P(X < \frac{1}{4} | X \geqslant - \frac{1}{2}) = \frac{P(X < \frac{1}{4}) - P(X < - \frac{1}{2})}{P(X \geqslant - \frac{1}{2})} = 0.28 $$
+
+# Exerciţiul 9
+Fie v.a. independente:
+$$ X \sim \left(\begin{array}{ccc} -1 & 0 & 1 \\ 0.3 & 0.2 & 0.5 \end{array} \right) \\ $$
+$$ Y \sim \left(\begin{array}{cccc} 0 & 1 & 2 & 3 \\ 0.3 & 0.2 & 0.1 & 0.4 \end{array} \right) \\ $$
+a) Să se determine E[X], E[Y].
+b) Să se afle v.a. Z = XY și să se calculeze E[Z].
+c) Ce relație există între valorile medii ale v.a. X, Y și Z ?
+
+$$a) E[x] = -1 \cdot 0.3 + 0 \cdot 0.2 + 1 \cdot 0.5 = 0.2 $$
+$$ E[y] = 0 \cdot 0.3 + 1 \cdot 0.2 + 2 \cdot 0.1 + 3 \cdot 0.4 = 1.6 $$
+$$b) Z = X \cdot Y = \left(\begin{array}{ccccccc} -3 & -2 & -1 & 0 & 1 & 2 & 3 \\ 0.12 & 0.03 & 0.06 & 0.44 & 0.1 & 0.05 & 0.2 \end{array} \right)$$
+$$E[z] = 0.32 $$
+$$c) E[x] * E[y] = E[z] \implies X \ si \ Y \ sunt \ independente $$
+
+# Exerciţiul 10
+Se consideră v.a:
+$$ X \sim \left(\begin{array}{cccc} 1 & 2 & 3 & 4 \\ 1/2 & 1/4 & 1/6 & 1/12 \end{array} \right) \\ $$
+Să se afle constantele a și b astfel încât variabila Y = aX + 3b să aibă media 0 ș varianța 1.
+
+$$ Y = ax + 3b =  \left(\begin{array}{cccc} a + 3b & 2a + 3b & 3a + 3b & 4a + 3b \\ 1/2 & 1/4 & 1/6 & 1/12 \end{array} \right) $$
+$$E[y] = \frac{11}{6}a + 3b = 0 $$
+$$Var(Y) = E[Y^2] - (E[Y])^2 $$
+$$E[Y^2] = \frac{1}{2}(a + 3b)^2 + \frac{1}{4}(2a + 3b)^2 + \frac{1}{6}(3a + 3b)^2 + \frac{1}{12}(4a + 3b)^2 = \frac{26}{6}a^2 + 11ab + 9b^2 $$
+$$ \implies a = \pm \frac{6}{\sqrt{35}} \implies b = - \frac{11}{18} $$
+
+# Exercițiul 11
+a) Fie X o v.a. a cărei densitate este:
+$$ f(x) =     \left\{ \begin{array}{rcl}
+ cln(\frac{a}{x}) & 0 < x < a, a > 0 \\
+0 & altfel
+\end{array}\right. $$
+
+Să se determine constanta c astfel încât f să fie densitate de probabilitate.
+
+$$f \ densitate \ de \ probabilitate \ \Leftrightarrow f(x) \geqslant 0 \ și \int_{-\infty}^{\infty}f(x)dx = 1$$
+$$\int_{-\infty}^{\infty}f(x)dx = \int_{-\infty}^{\infty}c \cdot ln(\frac{a}{x})dx = c[ln \ a \ \cdot x \  \vert_0^a] - (x \cdot lnx) \vert_0^a] = \\ = c ( a \cdot lna \ a - a \cdot ln \ a \ + a) = c \cdot a = 1 \implies c = \frac{1}{a} \implies c \in (0, 1]   $$ 
+
+b) Să se determine constanta c din intervalul (0, 1) astfel încât funcția:
+$$ f(x) =     \left\{ \begin{array}{rcl}
+\frac{1}{x},  & x \in [1 -c, \ 1 + c] \\
+0 & altfel
+\end{array}\right. $$ Să fie densitate de probabilitate.
+$$ c \in (0, 1]$$
+$$ \int_{-\infty}^{\infty}f(x) dx = \int_{-\infty}^{1 - c}f(x) dx + \int_{1 - c}^{1 + c}f(x) dx + \int_{1 + c}^{\infty}f(x) dx = ln \ x |_{1-c}^{1 + c} = ln(\frac{1 + c}{1 - c}) = 1 $$
+$$ \frac{1 + c}{1 - c} = e \implies c = \frac{e - 1}{e + 1} $$
+
+
+# Exercitiul 12
+
+Se consideră v.a. X cu densitatea de probabilitate:
+
+$$ f(x) =     \left\{ \begin{array}{rcl}
+ \alpha x^2e^{-kx} & x \geqslant 0 \\ 0 & x < 0 \\
+\end{array}\right. $$
+
+a) Să se determine constanta $\alpha$.
+b) Să se afle funcția de repartiție.
+c) Să se calculeze P(0 < X < k - 1 ).
+
+$$a) f \ densitate \ de \ probabilitate \Leftrightarrow \left\{\begin{array}{rcl} f(x) \geqslant 0 \implies  \alpha > 0 \\ \int_{-\infty}^{\infty} f(x)dx = 1 \end{array}\right. $$
+
+$$\int_{0}^{\infty}f(x)dx = \alpha \int_{0}^{\infty} x^2 \cdot e^{-kx} dx = \frac{2 \alpha}{k^3} = 1 \implies \alpha = \frac{k^3}{2}$$
+
+$$b) F[X] = \int_{-\infty}^{X} f(t)dt  = \int_{-\infty}^{0} dt + \int_{0}^{X} \alpha \cdot t^2 \cdot e^{-kt} dt= \alpha \int_{0}^{X} t^2 \cdot e^{-kt}dt = \frac{2 \alpha}{k^3}(1 - e^{-kX}) \ , \ X \geqslant 0$$
+$$X < 0 \implies F[X] = 0 $$
+
+$$c) P(0 < X < k^{-1} ) = P(k^{-1}) - P(0) = f(k^{-1}) - f(0) = \alpha \cdot k^{-2} \cdot e^{-k \frac{1}{k}} - 0 = \alpha \frac{1}{k^2 \cdot e} $$
+
+# Exercitiul 13
+
+Există v.a. X pentru care $V[X] = \sigma^2$ și $P(\mu - 2\sigma < X < \mu + 2 \sigma) = 0.6$ ?
+
+$$ V[X] = \sigma^2 $$
+$$P(\mu - 2 \sigma < X < \mu + 2 \sigma) = 0.6$$
+$$E[X] = \mu \ și \ V[X] = \sigma^2 \ aplicând \ Chebyshev \implies P(|X - \mu|) = a \leqslant \frac{\sigma^2}{a^2} \forall a > 0 $$
+
+# Exerciţiul 14
+Fie X și Y două variabile aleatoare cu repartițiile date de:
+
+$$ X \sim \left( \begin{array}{cc}2.5 & 4 \\ 0.4 & 0.6 \end{array} \right) \ și \ Y \sim \left( \begin{array}{cc}-4 & -1 \\ p_1 & p_2 \end{array} \right) \ cu \ p_1, p_2 \in (0,1).$$
+
+a) Aflați $p_1$  și  $p_2$  știind că  P(X = 2.5, Y = -1) = 0.2 și E[X|Y = -1] = 3.
+b) Considerând valorile lui $p_1$ ș $p_2$ aflate anterior, calculați coeficientul de corelație al lui X și Y.
+
+$$a)P(X = 2.5, Y= -1) = 0.2 = y \implies x = 0.2 $$
+$$E[X | Y = -1] = 2.5 \cdot y+ 4 \cdot w = 3 \implies w = \frac{3 - 0.5}{4} = 0.62 \implies z = -0.02  $$
+$$ p_1 = 0.2 - 0.02 = 0.18 $$
+$$ p_2 = 0.2  + 0.62 = 0.82 $$
+$$b)\rho(X, Y) = \frac{Cov(X, Y)}{\sigma_X \cdot \sigma_X}  $$
+$$Cov(X, Y) = E[X \cdot Y] - E[X] \cdot E[Y] $$
+$$\sigma_X = \sqrt{Var(X)} = \sqrt{E[X^2] - E^2[X]} $$
+$$\sigma_Y = \sqrt{Var(Y)} = \sqrt{E[Y^2] - E^2[Y]} $$
+
+$$ X \cdot Y = \left( \begin{array}{cccc} -10 & -2.5 & -16 & -4 \\ 0.072 & 0.328 & 0.108 & 0.492 \end{array} \right) $$
+
+$$E[X \cdot Y] = -0.72 - 0.82 - 1.728 - 1.968  = -5.236  $$
+$$E[X] = 1 + 2.4 = 3.4  $$
+
+$$E[Y] =-0.72   - 0.82= -1.54 $$
+$$Cov(X, Y) = -5.236 + 5.236 = 0 \implies \rho(X, Y) = 0 $$
+
+# Exercitiul 15 
+Fie cuplul de v.a. (X, Y) cu densitatea de repartițe $f(X,Y):$ $\mathbb{R}^2 \Rightarrow \mathbb{R}$, unde:
+$$f_{(X, Y)}(x, y) = \left\{ \begin{array}{rcl} k(x + y + 1) & x \in [0, 1], \ y \in [0, 2] \\ 0 & altfel \end{array} \right.  $$
+
+a) Să se determine constanta k.
+b) Să se determine densitățle marginale.
+c) Să se verifice dacă X și Y sunt independente.
+d) Să se afle funcțiile de repartițe marginale și funcța de repartiție a vectorului (X, Y).
+e) Să se determine densitățile v.a. X|Y = y și Y |X = x.
+
+$$a) f \ densitate \ de \ repartiție \Leftrightarrow \left\{ \begin{array}{rcl} f_{(X, Y)}(x, y)  \geqslant 0  \\ \int \int_{R \times R} f_{(X, Y)}] (x, y) dx \ dx = 1\\ \end{array} \right. $$
+
+$$ x \notin [0, 1] \  și \ y \notin [0, 2] \implies f_{(X, Y)}(x, y) = 0 \geqslant 0  $$
+$$ x \in [0, 1] \ și \ y \in [0, 2] \ f_{(X, Y)}(x, y) = k(x + y + 1), k \geqslant 0 $$
+$$\int_0^2 f_{(X, Y)}(x, y) \ dy =  \int_0^2 k(x + y + 2) \ dy = 4k + 2 \cdot kx $$
+$$\int_0^1(4k + 2 \cdot kx) dx = 5k = 1 \implies k = \frac{1}{5}   $$
+$$b) f_X(x) = \int_{-\infty}^{\infty} f_{(X, Y)}(x, y) \ dy $$
+$$ f_Y(y) = \int_{-\infty}^{\infty} f_{(X, Y)}(x, y) \ dx $$
+$$ f_X(x) = 4k + 2 \cdot kx = \frac{1}{5}(2x + 4)  $$
+$$ f_Y (y) = \int_0^1 \frac{1}{5}(x + y + 1) \ dx = \frac{3 + 2y}{10} $$
+
+$$c) \mathbb{P}(X \in A, \ y \in B) = \mathbb{P}(X \in A) \ \cdot \ \mathbb{P}(X \in B)\  \forall A, B \Leftrightarrow X, Y \ independente $$
+$$ \mathbb{P}(X \in A, \ y \in B) =  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{(X, Y)} (x, y) \ dx \ dy = 1 $$
+$$ \int_0^1 f_X(x) \ dx = 1  $$
+$$ \int_0^2 f_Y(y) \ dy = 1 $$
+
+$$d) f_X(x) = \left\{ \begin{array}{rcl} \frac{2(x + 2)}{5} & x \in [0, 1] \\ 0 & altfel \end{array} \right.  $$
+$$ f_Y(y) = \left\{ \begin{array}{rcl} \frac{2y + 3}{10} & y \in [0, 2] \\ 0 & altfel \end{array} \right. $$
+$$ F_X X= \int_{-\infty}^x f_x(t) \ dt$$
+$$ Dacă \ x < 0 \implies F_X[X] = 0$$
+$$ Dacă \ x \in [0, 1] \implies F_X[X] =  \int_{-\infty}^{0} 0 \ dt + \int_0^x \frac{2(t + 2)}{5} dt = \frac{x^2 + 4x}{5} $$
+$$ Dacă \ x > 1 \implies F_X[X] = 1 $$
+
+$$ F_Y[Y] = \int_{-\infty}^y f_y(t) \ dt $$
+$$ Dacă \ y < 0 \implies F_Y[Y] = 0 $$
+$$ Dacă \ y \in [0, 2] \implies F_Y[Y] = \int_{-\infty}^0 0 \ dt + \int_0^y \frac{2t + 3}{10} dt = \frac{y^2 + 3}{10} $$
+$$ Dacă \ y > 2 \implies F_Y[Y] = 1 $$
+
+# Exercițiul 16
+De câte ori trebuie aruncată o monedă pentru ca să putem spune cu o probabilitate de 0.6 că abaterea
+frecvenței de apariție a stemei de la probabilitatea p = 0.5 este mai mică decât 0.01?
+
+$$ \mathbb{P} = \frac{30}{100} \cdot \frac{1}{100} + \frac{25}{100} \cdot \frac{2}{100} + \frac{45}{100} \cdot \frac{4}{100} = 0.026 $$
+
+# Exerciţiul 17
+Nivelul de zgomot al unei maşini de spălat este o v.a. de medie 44 dB şi de abatere standard 5 dB. Admiţand
+aproximarea normală care este probabilitatea să găsim o medie a zgomotului superioară la 48 dB intr-un
+eşantion de talie 10 maşini de spălat?
+
+$$ \mu = 44 \ dB $$
+$$ \sigma = 5 \ dB$$
+$$ z_{score} = \frac{X - \mu}{\sigma} = \frac{48 - 44}{5} = 0.8 \implies \mathbb{P} = 0.2881$$
+
+# Exerciţiul 18
+O telecabină are o capacitate de 100 de persoane. Ştiind că greutatea populaţiei (ţarii) este o v.a. de medie
+66.3 Kg şi o abatere standard de 15.6 Kg şi presupunand că persoanele care au urcat in telecabină au fost
+alese in mod aleator din populaţie, care este probabilitatea ca greutatea totală acestora să depăşească 7000
+Kg?
+$$ \mu = 66.3 \ kg $$
+$$ \sigma = 15.6 \ kg $$
+$$ t_{score} = \frac{X - \mu}{\frac{\sigma}{\sqrt n}} = \frac{70 - 66.3}{\frac{15.6}{10}} = 2.371 \implies \mathbb{P} \approx 2,90 $$ 
+
