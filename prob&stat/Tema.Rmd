@@ -51,9 +51,11 @@ $$ b) C(P_{PS \cup GC}) = 0.1 $$
 $$ c) P_{PS \backslash GC} = \frac{n_{PS} - n_{PS \cap GC}}{N} = 0.2 $$
 
 # Exerciţiul 4
-Se aruncă la întâmplare patru zaruri. Să se determine S.
-a) Probabilitatea ca o anumită fat , ă să apară cel puțin o dată.
-b) Probabilitatea de a obt , ine o anumită fat , ă o singură dată.
+Se aruncă la întâmplare patru zaruri. Să se determine:
+
+a) Probabilitatea ca o anumită față să apară cel puțin o dată.
+
+b) Probabilitatea de a obține o anumită față o singură dată.
 
 $$a) P(n, a, n - a) = coeficientul \ lui \ t^a din \ Q(t)  $$
 $$ Q(t) = (p_1 t + q_1)(p_2 t + q_2) \ ... \ (p_n t + q_n) $$
@@ -141,8 +143,10 @@ $$ P(X < \frac{1}{4} | X \geqslant - \frac{1}{2}) = \frac{P(X < \frac{1}{4}) - P
 Fie v.a. independente:
 $$ X \sim \left(\begin{array}{ccc} -1 & 0 & 1 \\ 0.3 & 0.2 & 0.5 \end{array} \right) \\ $$
 $$ Y \sim \left(\begin{array}{cccc} 0 & 1 & 2 & 3 \\ 0.3 & 0.2 & 0.1 & 0.4 \end{array} \right) \\ $$
-a) Să se determine E[X], E[Y].
+ a) Să se determine E[X], E[Y].
+
 b) Să se afle v.a. Z = XY și să se calculeze E[Z].
+
 c) Ce relație există între valorile medii ale v.a. X, Y și Z ?
 
 $$a) E[x] = -1 \cdot 0.3 + 0 \cdot 0.2 + 1 \cdot 0.5 = 0.2 $$
@@ -211,7 +215,7 @@ Există v.a. X pentru care $V[X] = \sigma^2$ și $P(\mu - 2\sigma < X < \mu + 2 
 
 $$ V[X] = \sigma^2 $$
 $$P(\mu - 2 \sigma < X < \mu + 2 \sigma) = 0.6$$
-$$E[X] = \mu \ și \ V[X] = \sigma^2 \ aplicând \ Chebyshev \implies P(|X - \mu|) = a \leqslant \frac{\sigma^2}{a^2} \forall a > 0 $$
+$$E[X] = \mu \ și \ V[X] = \sigma^2 \ aplicând \ Chebyshev \implies P(|X - \mu|) = a \leqslant \frac{\sigma^2}{a^2} \ , \ \forall a > 0 $$
 
 # Exerciţiul 14
 Fie X și Y două variabile aleatoare cu repartițiile date de:
