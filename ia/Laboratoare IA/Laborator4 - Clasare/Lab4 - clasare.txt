@@ -1,0 +1,17 @@
+a) Fie Z0 densitatea de probab. a var 2D distribuita Gauss de parametrii mu0=[1,0] si sig0=[1, -.4;-.4, .5]. Fie Z1 densitatea de probab. a var 2D distribuita Gauss de parametrii mu1=[0,1] si sig1=[.5, .3;.3, .5]. Trasati, pe acelasi grafic, cele doua suprafete si conturul lor. Verificati ca functiile trasate sunt densitati de probabilitate (integrand numeric si observand ca val. = 1)
+
+b) Fie  Z=(1-p)*Z0+p*Z1 cu p=.25 densitatea de probab. a mixturii Z0 si Z1. Trasati graficul suprafetei si conturului lui Z. Verificati ca functia este o densitate de probab.
+
+c) calculeaza eta(x), L_star si ploteaza eta(x)=0.5;
+
+d) Dandu-se p, N, m0,sig0, m1,sig1 sa se genereze N pcte in 2D astfel: provin cu probab p din clasa C0 si sunt distribuite gaussian de medie mu0 si matrice de var-covar sig0, respectiv cu probab 1-p si sunt distribuite gaussian de medie mu1 si matrice de var-covar sig1;
+
+e) folosind modelul de discriminare liniara (fitcdiscr) estimeaza dreapta de discriminare. Ploteaza, in aceeasi fig., vol de selectie, dreapta de regresie si eta(x)=0.5;
+
+f) calculeaza matricea de confuzie si curba ROC a modelului de discrim. liniara;
+
+g) folosind modelul Naive Bayes (fitcnb) calculeaza matricea de confuzie si curba ROC;
+ 
+h) Pt o prob. apriori data, se ploteaza in aceeasi fig. L_star, cB, cR (erorile de misclasare a lui NB, LD) pe axa Oy pt N=100; 200; 1000; 2000; 10000 pe axa Ox;
+
+i) Se repeta pctele d)-h) pt prob.ap.= 0.25; 0.5; 0.75
