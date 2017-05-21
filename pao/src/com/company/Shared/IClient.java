@@ -12,6 +12,6 @@ public interface IClient extends Remote {
     public String[] getMessages(String roomID)throws RemoteException;
     public void sendMessage(String message, String roomID)throws RemoteException;
     public String getNickName()throws RemoteException;
-    public void update(String roomID, int opc)throws RemoteException;
+    public void update(String roomID, int option)throws RemoteException;
 }
 

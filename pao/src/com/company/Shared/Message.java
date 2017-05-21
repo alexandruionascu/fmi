@@ -11,7 +11,7 @@ public class Message {
         this.text = text;
     }
 
-    public String getTexto() {
+    public String getText() {
         return text;
     }
 }
