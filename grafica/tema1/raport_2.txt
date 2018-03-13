@@ -1,0 +1,6 @@
+Incepem prin a defini inaltimea si latimea
+Am folosit comanda 'S'.
+Comanda 'S' e mereu urmata de un o alta comanda 'S' sau 'C'.
+Daca niciuna nu e urmata, atunci le ia pe ambele drept acelasi punct.
+Astfel se produce efectul de oglinda.
+Cu 'Z' realizam inchidrea de la inceput la final.
