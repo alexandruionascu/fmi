@@ -1,0 +1,4 @@
+Alegem ca puncte de control: (400, 50), (400, 550), (800, 50), (800, 550).
+Punctele sunt simetrice doua cate doua.
+dx = 400 => x2 = x1 + dx
+dy = 500 => y2 = y1 + dy, iar calea porneste / se incheie la jumatatea distantelor.
