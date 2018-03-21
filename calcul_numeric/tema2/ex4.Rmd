@@ -1,0 +1,126 @@
+---
+title: "Tema 2 - Exercitiul 4"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Sa se rezolve manual conform algoritmilor: metoda Gauss fara pivotare, metoda Gauss cu
+pivotare partiala si metoda Gauss cu pivotare totala urmatoarele sisteme:
+$$
+fara \ pivotare: \
+A =
+  \begin{bmatrix}
+  4 &   2 &   1  &  1 \\
+  0 &   1 &   1  &  3 \\
+  2 &   1 &   5  &  5 \\
+  \end{bmatrix} \stackrel{L_{3} - \frac{1}{2} L{1}}{=} 
+  \begin{bmatrix}
+  4 &  2 &   1 &   1 \\
+   0   &1   &1   & 3 \\
+   0   &0 &   4.5 &   4.5\\
+  \end{bmatrix} \stackrel{L_1 - 2 L_2}{=} 
+  \begin{bmatrix}
+  4 &   0 &  -1 &  -5 \\
+   0 &   1 &   1 &   3 \\
+   0 & 0 & 4.5 &   4.5 \\
+  \end{bmatrix} \stackrel{L_1 + \frac{1}{4.5} L_3}{=}
+  \begin{bmatrix}
+   4 &   0 &   0 &  -4 \\
+   0 &   1 &   1 &   3 \\
+   0 &   0 &   4.5 &   4.5\\
+   \end{bmatrix} \stackrel{L_2 - \frac{1}{4.5} L_3}{=} \\
+   \begin{bmatrix}
+    4 &   0 &   0 &  -4 \\
+   0 &   1  &   0 &   2 \\
+   0 &   0 &   4.5 &   4.5 \\
+   \end{bmatrix} = 
+   \begin{bmatrix}
+   1 &   0 &   0 &  -1\\
+   0 &   1 &   0 &   2 \\
+   0&   0 &   1 &   1 \\
+  \end{bmatrix}
+$$
+$$ pivotare \ partiala: \
+B =
+  \begin{bmatrix}
+0& 1 & -2& 4 \\
+1& -1 & 1 & 6 \\
+1 & 0 & -1 & 2 \\
+\end{bmatrix} \stackrel{L_1 \leftrightarrow L_2}{=} 
+  \begin{bmatrix}
+   1 &  -1 &   1  & 6 \\
+   0 &   1 &  -2  & 4 \\
+   1 &   0 &  -1  & 2 \\
+  \end{bmatrix} \stackrel{L_2 - \frac{B_{2, 1}}{B_{1, 1}} * L1 \ si \ L_3 - \frac{B_{3, 1}}{B_{1, 1}} * L1 }{=} 
+  \begin{bmatrix}
+  1  &-1&   1&   6\\
+   0   &1&  -2   &4\\
+   0&   1&  -2&  -4\\
+  \end{bmatrix} \stackrel{L_1 - \frac{B_{1, 2}}{B_{2, 2}} * L2 \ si \ L_3 - \frac{B_{3, 2}}{B_{2, 2}} * L2}{=} \\
+  \begin{bmatrix}
+    1 &    0 &   -1 &   10\\
+    0&    1&   -2&    4\\
+    0&    0&    0&   -8\\
+   \end{bmatrix} \stackrel{L_1 \leftrightarrow L_2}{=}
+   \begin{bmatrix}
+    0 &    1 &   -2 &    4 \\
+    1 &    0  & -1 &  10 \\
+    0 &   0 &   0 &  -8\\ 
+   \end{bmatrix}
+ \ \Rightarrow 0 = -8, \ deci \  nu \  avem \ solutie
+$$
+$$
+pivotare \ totala: \ C = 
+\begin{bmatrix}
+4 & 2 & 1 &1 \\
+0 & 1 & 1 & 3 \\
+2 & 1 & 5 & 5 \\
+\end{bmatrix}
+\stackrel{C_1 \leftrightarrow C_3}{=}
+\begin{bmatrix}
+1 &  2 &  4 &   1\\
+1 & 1  &  0 &   3\\
+5 & 1  &  2 &   5 \\
+\end{bmatrix} \stackrel{L_1 \leftrightarrow L3}{=}
+\begin{bmatrix} 
+5 & 1 & 2 & 5 \\
+1 & 1 & 0 & 3 \\
+1 & 2 & 4 & 1 \\
+\end{bmatrix}
+\stackrel{L_2 - \frac{C_{2, 1}}{C_{1, 1}} * L_1 \ si \ L_3 - \frac{C_{3, 1}}{C_{1, 1}} * L_1}{=} \\
+\begin{bmatrix}
+5 &  1  &     2 &   5 \\
+0 & 0.8 &  -0.4 &   2 \\
+0 & 1.8 &   3.6 &   0 \\
+\end{bmatrix}
+\stackrel{C_2 \leftrightarrow C_3 \ si \ L_2 \leftrightarrow L_3}{=} \\
+\begin{bmatrix}
+ 5 &   2 &   1 &   5 \\
+ 0 & 3.6 & 1.8 &   0 \\
+ 0 &-0.4 &  0.8&   2\\
+\end{bmatrix}
+\stackrel{L_1 - \frac{C_{1, 2}}{C_{2, 2}} * L_2 \ si \ L_3 - \frac{C_{3, 2}}{C_{2, 2}} * L_2}{=}
+\begin{bmatrix}
+  5   &  0  &    0 &   5 \\
+  0   & 3.6 &  1.8 &   0 \\
+  0   &   0 &    1 &   2 \\
+\end{bmatrix}
+\stackrel{L_1 - \frac{C_{1, 3}}{C_{3, 3}} * L_3 \ si \ L_3 - \frac{C_{2, 3}}{C_{3, 3}} * L_3}{=} \\
+\begin {bmatrix}
+5 &    0 &   0 &   5 \\
+0 &  3.6 &   0 &  -3.6 \\
+0 &    0 &   1 &   2 \\
+\end{bmatrix} =
+\begin{bmatrix}
+ 1 & 0  & 0 & 1\\
+ 0 & 1  & 0  &  -1\\
+ 0 & 0  & 1  & 2\\
+\end{bmatrix}
+$$
+
+

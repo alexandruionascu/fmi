@@ -1,16 +1,17 @@
-Scena contine 4 elemente principale: un copac, o casa, soare, si o masina.
-Incepem descrierea de la dreapta la stanga.
-Copacul este realizat dintr-un cerc pozitionat la (64, 64)
+   Scena contine 4 elemente principale: un copac, o casa, soare, si o masina. Incepem descrierea de la dreapta la stanga.
+
+   Copacul este realizat dintr-un cerc pozitionat la (64, 64)
 cu raza 60 si trunchiul lui dintr-un dreptunghi pozitionat la mijloc (50, 100) cu lungimea 25, respectiv 100.
-Masina e realizata din doua dreptunghiuri continue unul dupa celalalt si
-doua cercuri jumatate acoperite. 
-Partea de sus a masinii se afla la pozitia (40, 225) iar cel de al doilea 
-in prelungirea lui la coordonate (40, 260). Ambele au intaltimea 40, dar 
-cel de jos este mai lung: 175. 
+In interior avem o spirala.
+   Masina e realizata din doua dreptunghiuri continue unul dupa celalalt si
+doua cercuri jumatate acoperite.
+Partea de sus a masinii se afla la pozitia (40, 225) iar cel de al doilea
+in prelungirea lui la coordonate (40, 260). Ambele au intaltimea 40, dar
+cel de jos este mai lung: 175.
 Rotile sunt ambele la pozitia Y: 300, prima roata cu X: 80 iar a doua X: 180.
-Casa e formata dintr-un acoperis ce e reprezentat de un trapez cu pozitia 
-(150, 80). Baza casei incepe cu prima linie (200, 150) iar cea din dreapta la (325, 150). 
+   Casa e formata dintr-un acoperis ce e reprezentat de un trapez cu pozitia
+(150, 80). Baza casei incepe cu prima linie (200, 150) iar cea din dreapta la (325, 150).
 Ferestrele sunt ambele de lungime si inaltime 15 la inaltimea de 160, iar usa
 este la jumatatea casei cu latime 50 si inaltime 30.
-Soarele este o elipsa cu razaX 100 si razaaY 50, pozitionat la (500, 30).
+   Soarele este o elipsa cu razaX 100 si razaaY 50, pozitionat la (500, 30), si este umplut in gradient de galben -> alb.
 Intreg canvasul este de 580 x 400.

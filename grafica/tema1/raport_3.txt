@@ -1,4 +1,10 @@
+Ne propunem sa obtinem simbolul infinit.
+Acesta il putem construi din doua curbe simialre cu cele de la sinus.
 Alegem ca puncte de control: (400, 50), (400, 550), (800, 50), (800, 550).
+Punctele de control pleaca de fapt de la unul singur: (400, 50).
 Punctele sunt simetrice doua cate doua.
+
 dx = 400 => x2 = x1 + dx
 dy = 500 => y2 = y1 + dy, iar calea porneste / se incheie la jumatatea distantelor.
+
+Astfel obtinem simbolul infinit.
