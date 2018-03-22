@@ -1,0 +1,48 @@
+The resulted tokens are:
+Line 1: An operator: #
+Line 1: An identifier: include
+Line 1: An operator: <
+Line 1: An identifier: iostream
+Line 1: An operator: >
+Line 2: A keyword: using
+Line 2: A keyword: namespace
+Line 2: An identifier: std
+Line 2: A separator ;
+Line 4: A keyword: int
+Line 4: An identifier: main
+Line 4: A separator ()
+Line 4: A separator {
+Line 5: A keyword: int
+Line 5: An identifier: s
+Line 5: An operator: =
+Line 5: An integer: 20 (20)
+Line 5: A separator ;
+Line 6: An identifier: string
+Line 6: An identifier: s
+Line 6: An operator: =
+Line 6: A string: "text"
+Line 6: A separator ;
+Line 7: A keyword: for
+Line 7: A separator (
+Line 7: A keyword: int
+Line 7: An identifier: i
+Line 7: An operator: =
+Line 7: An integer: 0 (0)
+Line 7: A separator ;
+Line 7: An identifier: i
+Line 7: An operator: <
+Line 7: An integer: 10 (10)
+Line 7: A separator ;
+Line 7: An identifier: i
+Line 7: An operator: ++
+Line 7: A separator )
+Line 7: A separator {
+Line 8: An identifier: s
+Line 8: An operator: +=
+Line 8: An identifier: i
+Line 8: A separator ;
+Line 9: A separator }
+Line 11: A keyword: return
+Line 11: An integer: 0 (0)
+Line 11: A separator ;
+Line 12: A separator }
